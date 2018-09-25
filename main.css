@@ -1,0 +1,83 @@
+.principal {
+  width: 100%;
+  height: 100vh;
+  background-image: url("./images/grass.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  text-align: center; }
+  .principal__logo {
+    align-self: center;
+    margin: 20px;
+    margin-bottom: 50px;
+    width: 350px; }
+  .principal__message {
+    font-size: 18px;
+    color: white;
+    font-family: "Poppins", sans-serif; }
+  .principal-container {
+    display: flex;
+    justify-content: center;
+    flex-flow: row nowrap;
+    margin: 20px; }
+  .principal-facebook {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: column;
+    position: relative;
+    margin: 20px;
+    text-align: center; }
+    .principal-facebook__shirt {
+      width: 100px;
+      height: 100px;
+      align-self: center; }
+    .principal-facebook__icon {
+      width: 35px;
+      position: absolute;
+      left: 74px;
+      bottom: 74px;
+      cursor: pointer; }
+    .principal-facebook__text {
+      font-size: 15px;
+      font-family: "Poppins", sans-serif;
+      color: white;
+      background: blue;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-weight: bold;
+      margin-top: 10px;
+      cursor: pointer; }
+  .principal-google {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: column;
+    position: relative;
+    margin: 20px;
+    text-align: center; }
+    .principal-google__shirt {
+      width: 100px;
+      height: 100px;
+      align-self: center; }
+    .principal-google__icon {
+      width: 35px;
+      position: absolute;
+      left: 70px;
+      bottom: 74px;
+      cursor: pointer; }
+    .principal-google__text {
+      font-size: 15px;
+      font-family: "Poppins", sans-serif;
+      color: white;
+      font-weight: bold;
+      margin-top: 10px;
+      padding: 5px 10px;
+      border-radius: 6px;
+      background: red;
+      cursor: pointer; }
+
+.body {
+  margin: 0px; }
+
+/*# sourceMappingURL=main.css.map */
