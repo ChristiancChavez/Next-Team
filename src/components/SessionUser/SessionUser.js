@@ -8,6 +8,7 @@ import invitation from '../../images/invitation-icon.png';
 import news from '../../images/news-icon.png';
 import user from '../../images/user-icon.png';
 import logo from '../../images/logo-white.png';
+import next from '../../images/nexts-icon.png';
 
 
 const Session = () => {
@@ -17,15 +18,15 @@ const Session = () => {
             <span className="board">
                 <section className="options">
                     <span className="option">
-                        <span className="option__title">Crea Partido</span>
+                        <span className="option__title">Crear Partido</span>
                         <img className="option__img" src={create} alt="crea partido" />
                     </span>
                     <span className="option">
-                        <span className="option__title">Tu Equipo</span>
+                        <span className="option__title">Mi Equipo</span>
                         <img  className="option__img" src={team} alt="tu equipo" />
                     </span>
                     <span className="option">
-                        <span className="option__title">Busca Partidos</span>
+                        <span className="option__title">Buscar Partidos</span>
                         <img className="option__img" src={search} alt="busca partidos" />
                     </span>
                     <span className="option">
@@ -37,8 +38,8 @@ const Session = () => {
                         <img className="option__img" src={invitation} alt="partidos pasados" />
                     </span>
                     <span className="option">
-                        <span className="option__title">Invitaciones</span>
-                        <img className="option__img" src={invitation} alt="partidos pasados" />
+                        <span className="option__title">Proximos Partidos</span>
+                        <img className="option__img" src={next} alt="partidos pasados" />
                     </span>
                 </section>
             </span>
