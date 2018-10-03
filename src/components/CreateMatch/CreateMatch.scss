@@ -1,0 +1,86 @@
+.match {
+    display: flex;
+    flex-flow: column;
+    &-header {
+        font-family: 'Poppins', sans-serif;
+        display: flex ;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        background: rgb(197, 156, 22);
+        margin: 0px;
+        color: black;
+        &__title {
+            font-size: 150%;
+            padding-left: 35%;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        &__icon {
+            background: black;
+            border-left: solid 5px white;
+            display: flex;
+            justify-content: center;
+            
+           &-img {
+            width: 25%;
+            height: 25%;
+            padding: 7%;
+            
+           }
+        }
+    }
+    &-main {
+        display: flex;
+        justify-content: center;
+        flex-flow: column;
+        &__img {
+            width: 45%;
+            align-self: center;
+        }
+    }
+    &-team {
+        display: flex;
+        justify-content: space-around;
+        padding: 1%;
+        background: lightgray;
+        font-family: 'Poppins', sans-serif;
+        font-size: 10%;
+        margin-bottom: 10px;
+        &__input {
+            padding: 5px;
+            text-align: center;
+            color: black;
+            border-radius: 6px;
+            border: rgb(197, 156, 22) solid 1px;
+            background: white;
+            &:focus {
+                outline: none;
+            }
+        }
+        &__line {
+            padding: 5px;
+            text-align: center;
+            color: black;
+            border-radius: 6px;
+            border: rgb(197, 156, 22) solid 1px;
+            background: white;
+            font-size: 12px;
+            width: 5%;
+        }
+    }
+    &-configure {
+        display: flex;
+        justify-content: space-between;
+        flex-flow: row nowrap;
+        padding: 8px 15px;
+        background: black;
+        align-items: center;
+        &__btn {
+            width: 3%;
+            height: 3%; 
+            cursor: pointer;
+        }
+    }
+    
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import './App.scss';
 import MainContent from './MainContent/MainContent';
 import SessionUser from './SessionUser/SessionUser';
+import CreateMatch from './CreateMatch/CreateMatch';
 import { Route, Link, Switch } from 'react-router-dom';
 
 const App = () => {
@@ -15,7 +16,8 @@ const App = () => {
         <main>
           <Switch>
             <Route exact path="/" component={MainContent}/>
-            <Route exact path="/Session-user" component={SessionUser}/>
+            <Route exact path="/session-user" component={SessionUser}/>
+            <Route exact path="/create-match" component={CreateMatch}/>
             {/* <Route exact path="/about-us" component={AboutUs} /> */}
           </Switch>
         </main>
