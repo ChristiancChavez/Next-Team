@@ -1,7 +1,6 @@
 import React from 'react';
 import CreateTeam from './CreateTeam/CreateTeam';
 import search from '../../../images/search-icon.png';
-import './Team.scss';
 
 const Team = () => {
     return(
