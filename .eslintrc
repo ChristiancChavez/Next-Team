@@ -1,0 +1,9 @@
+{
+"parser": "babel-eslint",
+  "extends": ["airbnb"],
+  "env": {
+    "jest": true,
+    "browser": true,
+    "es6": true
+  }
+}

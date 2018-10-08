@@ -19,12 +19,10 @@ class MainContent extends Component {
         this.setState({
             name: e.target.value,
         });
-        console.log(this.state.name);
     }
 
     render() {
         const { onClickAddPlayer, players, onClickRemovePlayer } = this.props;
-        console.log(this.props);
         return (
             <span className="principal">
                 <img className="principal__logo" src={logo} alt="Logo Next Team" />
