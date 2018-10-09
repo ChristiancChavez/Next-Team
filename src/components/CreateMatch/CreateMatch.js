@@ -7,75 +7,129 @@ import shirts from '../../images/shirt-options.png';
 import calendar from '../../images/date.png';
 import field from '../../images/field-option.png';
 import configure from '../../images/configure.png';
-import deleteTeam from '../../images/delete-team.png';
+import close from '../../images/delete-team.png';
+import shield from '../../images/shield.png';
+import Team from './Team/Team';
 import CreateTeam from './Team/CreateTeam/CreateTeam';
+import check from '../../images/check-icon.png';
+import deleteIcon from '../../images/delete-icon.png';
+import editIcon from '../../images/edit-icon.png';
+import ballPlay from '../../images/ball-play.png';
+import captain from '../../images/captain.png';
+import Users from '../../Library/Users';
 
-class CreateMatch extends Component {
-
-    constructor() {
+class CreateMatch extends Component { 
+    constructor () {
         super();
         this.state = {
-            equipo: '',
-            alias: '',
-            jugadores: '', 
-            FPC : {
-               liga:  ["junior", "nacional", "pasto", "medellin"],
-               copa: ["caldas", "leones", "huila"],
-            }
+            addPlayer: false,
+            createTeam: false,
+            name: '',
+            nickname: '',
+            players: '',
+            containerInput: true,
+            namePlayer: '',
+            numberPlayer: '',
+            editPlayer: false,
         }
     }
 
     handleOnChange = e => {
-        const  { target: { value, name } } = e;
-        this.setState({
-            [name]: value,
-            FPC: {liga:["patriotas", "chico", "santafe", "aguilas"],
-            copa: ["caldas", "leones", "huila"],},
-        })
-        
+        const { target: { value, name } } = e
+        this.setState({        
+            [name]: value      
+        }); 
     }
 
-    handleOnClick = () => {
+    toggleAddPlayer = () => {
         this.setState({
-            equipo: "Nacional",
-            alias: 'verdolaga',
-            jugadores: 'paisas',
-            FPC: {liga:["envigado", "cali", "america", "magdalena"],
-            copa: ["union", "tigres", "rionegro"],},
+            addPlayer: !this.state.addPlayer,
         })
-    }
-    
- 
+    };
 
-    render () {
+    showCreateTeam = () => {
+        this.setState ({
+            createTeam: !this.state.createTeam,
+        })
+    };
+
+    hideInfoInput = () => {
+        const { name,  nickname, players, } = this.state;
+        if( name !== '' && nickname !== '' && players !== ''){
+            this.setState({
+                containerInput:!this.state.containerInput,
+            });
+        }
+    };
+
+    showPlayersList = () => {
+        const database = Users;
+        return database.map((singlePLayer) => <span className="list-player" key={singlePLayer.name}>
+                <span className="list-player-options">
+                    <img className="list-player-options__option" src={captain} alt="capitan"/>
+                    <img className="list-player-options__option" src={ballPlay} alt="capitan"/>
+                </span>   
+                <span className="list-player__name">{singlePLayer.name}</span>
+                <span className="list-player__number">{singlePLayer.number}</span>
+                <span className="list-player-icons">
+                    <img className="list-player-icons__icon" src={editIcon} alt="editar jugador" onClick={this.showEditPlayer}/>
+                    <img className="list-player-icons__icon" src={deleteIcon} alt="eliminar jugador" />
+                </span>   
+            </span>
+        )
+    };
+
+    showEditPlayer = () => {
+        this.setState({
+            editPlayer: !this.state.editPlayer,   
+        })
+    };
+
+    render() {
+        const { name } = this.state;
         return (
-
             <div className="match">
                 <span className="match-header">
-                    <span className="match-header__title">Crear Partido</span>
-                    <span className="match-header__icon"><img className="match-header__icon-img" src={create} alt="crear partido" /></span>
+                    <span className="match-header__title">
+                        <span>Crear Partido</span>
+                    </span>
+                    <span className="match-header__icon">
+                        <img className="match-header__icon-img" src={create} alt="crear partido" />
+                    </span>
                 </span>
                 <section className="match-main">
-                    <span className="match-team">
-                        <input onChange={this.handleOnChange} value={this.state.equipo} name="equipo"  className="match-team__input" placeholder="Nombre de tu Equipo" />
-                        <input onChange={this.handleOnChange} value={this.state.alias} name="alias"  className="match-team__input" placeholder="Alias de tu  Equipo" />
-                        <input onChange={this.handleOnChange} value={this.state.jugadores} name="jugadores"  className="match-team__input" placeholder="Número de Jugadores" />
-                        <span className="match-team__line" > 4-3-2-1</span>
+                    {this.state.containerInput ? <span id="infoTeam" className="match-team">
+                        <input className="match-team__input" type="text" placeholder="Nombre de tu Equipo" name="name" value={this.state.name} onChange={this.handleOnChange} />
+                        <input className="match-team__input" type="text" placeholder="Alias de tu  Equipo" name="nickname" value={this.state.nickname}  onChange={this.handleOnChange}/>
+                        <input className="match-team__input match-team__input--number" type="number" min="5" max="20" placeholder="Jugadores" name="players" value={this.state.players}  onChange={this.handleOnChange}/>
+                        <span className="match-team__line"> 4-3-2-1</span>
+                        <img className="match-team__check" src={check} alt="validar información" onClick={this.hideInfoInput} />
+                    </span> : ''}
+                    <span className="match-name">
+                        <span className="match-name__name">{name}</span>
+                        <img className="match-name__shield" src={shield} alt="escudo del equipo" />
                     </span>
                     <img className="match-main__img" src={soccerField} alt="campo de juego" />
+
+                    {this.state.createTeam ? <CreateTeam 
+                        showCreateTeam={this.showCreateTeam} 
+                        hidecreateTeam={this.state.createTeam} 
+                        playerList={this.showPlayersList} 
+                        editPlayer={this.state.editPlayer}/> 
+                    : ''}
                 </section>
                 <section className="match-configure">
-                    <img className="match-configure__btn" src={players} alt="Lista jugadores" onClick={this.handleOnClick} />
+                    <img className="match-configure__btn" src={players} alt="Lista jugadores" onClick={this.toggleAddPlayer} />
                     <img className="match-configure__btn" src={shirts} alt="Uniforme" />
                     <img className="match-configure__btn" src={field} alt="campo de juego" />
                     <img className="match-configure__btn" src={calendar} alt="fecha y lugar" />
                     <img className="match-configure__btn" src={configure} alt="configuracion" />
-                    <img className="match-configure__btn" src={deleteTeam} alt="eliminar equipo" />
+                    <img className="match-configure__btn" src={close} alt="cerrar" />
                 </section>
-                <CreateTeam FPC={this.state} />
+                {this.state.addPlayer ? <Team showCreateTeam={this.showCreateTeam} createTeam={this.state.createTeam} /> : ''}
             </div>
-            
         );
     }
-} 
+}
+    
 export default CreateMatch;
