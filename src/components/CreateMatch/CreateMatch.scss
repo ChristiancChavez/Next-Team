@@ -6,27 +6,26 @@
         display: flex ;
         flex-flow: row nowrap;
         justify-content: space-between;
-        align-items: center;
-        background: rgb(197, 156, 22);
         margin: 0px;
         color: black;
-        &__title {
-            font-size: 150%;
-            padding-left: 35%;
+        text-align: center;
+        &__title { 
+            width: 105%;
+            font-size: 1.5em;
             font-weight: bold;
             letter-spacing: 1px;
+            background: rgb(197, 156, 22);
+            padding: 1% 0%;
         }
         &__icon {
             background: black;
             border-left: solid 5px white;
             display: flex;
             justify-content: center;
-            
+            align-items: center;
            &-img {
-            width: 25%;
-            height: 25%;
-            padding: 7%;
-            
+            width: 30%;
+            height: 50%;
            }
         }
     }
@@ -34,9 +33,35 @@
         display: flex;
         justify-content: center;
         flex-flow: column;
+        position: relative;
         &__img {
-            width: 45%;
+            width: 48%;
             align-self: center;
+        }    
+    }
+    &-name {
+        position: absolute;
+        bottom: 4%;
+        left: 37%;
+        color: black;
+        font-family: 'Poppins', sans-serif;
+        font-weight: bold;
+        width: 26%;
+        background: white;
+        display: flex;
+        justify-content: center;
+        flex-flow: row nowrap;
+        padding: 0.5% 0%;
+        box-shadow: 6px 5px 6px rgb(53, 46, 46);
+        align-items: center;
+        border-radius: 6px;
+        &__name {
+            margin-right: 2%;
+            font-size: 1.5em;
+        }
+        &__shield {
+            width: 8%;
+            height: 20%;
         }
     }
     &-team {
@@ -45,18 +70,28 @@
         padding: 1%;
         background: lightgray;
         font-family: 'Poppins', sans-serif;
-        font-size: 10%;
+        font-size: 2em;
         margin-bottom: 10px;
-        &__input {
+        align-items: center;
+        &__input { 
+            width: 20%;
             padding: 5px;
             text-align: center;
             color: black;
             border-radius: 6px;
             border: rgb(197, 156, 22) solid 1px;
             background: white;
+            &--number {
+                width: 10%;
+            }
             &:focus {
                 outline: none;
             }
+        }
+        &__check{
+            width: 2%;
+            height: 2%;
+            cursor: pointer;
         }
         &__line {
             padding: 5px;
@@ -70,6 +105,7 @@
         }
     }
     &-configure {
+        margin-top: 10px;
         display: flex;
         justify-content: space-between;
         flex-flow: row nowrap;
