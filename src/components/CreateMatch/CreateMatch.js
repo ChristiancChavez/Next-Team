@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './CreateMatch.scss';
 import create from '../../images/create-icon.png';
 import soccerField from '../../images/soccer-field.jpg';
-import players from '../../images/player.png';
+import player from '../../images/player.png';
 import shirts from '../../images/shirt-options.png';
 import calendar from '../../images/date.png';
 import field from '../../images/field-option.png';
@@ -54,8 +54,8 @@ class CreateMatch extends Component {
     };
 
     hideInfoInput = () => {
-        const { name,  nickname, players, } = this.state;
-        if( name !== '' && nickname !== '' && players !== ''){
+        const { name, nickname, players } = this.state;
+        if( !name && !nickname && !players ){
             this.setState({
                 containerInput:!this.state.containerInput,
             });
@@ -63,8 +63,7 @@ class CreateMatch extends Component {
     };
 
     showPlayersList = () => {
-        const database = Users;
-        return database.map((singlePLayer) => <span className="list-player" key={singlePLayer.name}>
+        return Users.map((singlePLayer) => <span className="list-player" key={singlePLayer.name}>
                 <span className="list-player-options">
                     <img className="list-player-options__option" src={captain} alt="capitan"/>
                     <img className="list-player-options__option" src={ballPlay} alt="capitan"/>
@@ -86,7 +85,7 @@ class CreateMatch extends Component {
     };
 
     render() {
-        const { name } = this.state;
+        const { name, containerInput, createTeam, addPlayer, nickname, players, editPlayer } = this.state;
         return (
             <div className="match">
                 <span className="match-header">
@@ -98,10 +97,10 @@ class CreateMatch extends Component {
                     </span>
                 </span>
                 <section className="match-main">
-                    {this.state.containerInput ? <span id="infoTeam" className="match-team">
-                        <input className="match-team__input" type="text" placeholder="Nombre de tu Equipo" name="name" value={this.state.name} onChange={this.handleOnChange} />
-                        <input className="match-team__input" type="text" placeholder="Alias de tu  Equipo" name="nickname" value={this.state.nickname}  onChange={this.handleOnChange}/>
-                        <input className="match-team__input match-team__input--number" type="number" min="5" max="20" placeholder="Jugadores" name="players" value={this.state.players}  onChange={this.handleOnChange}/>
+                    {containerInput ? <span id="infoTeam" className="match-team">
+                        <input className="match-team__input" type="text" placeholder="Nombre de tu Equipo" name="name" value={name} onChange={this.handleOnChange} />
+                        <input className="match-team__input" type="text" placeholder="Alias de tu  Equipo" name="nickname" value={nickname}  onChange={this.handleOnChange}/>
+                        <input className="match-team__input match-team__input--number" type="number" min="5" max="20" placeholder="Jugadores" name="players" value={players}  onChange={this.handleOnChange}/>
                         <span className="match-team__line"> 4-3-2-1</span>
                         <img className="match-team__check" src={check} alt="validar información" onClick={this.hideInfoInput} />
                     </span> : ''}
@@ -111,22 +110,22 @@ class CreateMatch extends Component {
                     </span>
                     <img className="match-main__img" src={soccerField} alt="campo de juego" />
 
-                    {this.state.createTeam ? <CreateTeam 
+                    {createTeam ? <CreateTeam 
                         showCreateTeam={this.showCreateTeam} 
-                        hidecreateTeam={this.state.createTeam} 
+                        hidecreateTeam={createTeam} 
                         playerList={this.showPlayersList} 
-                        editPlayer={this.state.editPlayer}/> 
+                        editPlayer={editPlayer}/> 
                     : ''}
                 </section>
                 <section className="match-configure">
-                    <img className="match-configure__btn" src={players} alt="Lista jugadores" onClick={this.toggleAddPlayer} />
+                    <img className="match-configure__btn" src={player} alt="Lista jugadores" onClick={this.toggleAddPlayer} />
                     <img className="match-configure__btn" src={shirts} alt="Uniforme" />
                     <img className="match-configure__btn" src={field} alt="campo de juego" />
                     <img className="match-configure__btn" src={calendar} alt="fecha y lugar" />
                     <img className="match-configure__btn" src={configure} alt="configuracion" />
                     <img className="match-configure__btn" src={close} alt="cerrar" />
                 </section>
-                {this.state.addPlayer ? <Team showCreateTeam={this.showCreateTeam} createTeam={this.state.createTeam} /> : ''}
+                {addPlayer ? <Team showCreateTeam={this.showCreateTeam} createTeam={createTeam} /> : ''}
             </div>
         );
     }
