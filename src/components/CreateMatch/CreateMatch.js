@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './CreateMatch.scss';
 import create from '../../images/create-icon.png';
 import soccerField from '../../images/soccer-field.jpg';
 import player from '../../images/player.png';
@@ -9,20 +8,24 @@ import field from '../../images/field-option.png';
 import configure from '../../images/configure.png';
 import close from '../../images/delete-team.png';
 import shield from '../../images/shield.png';
-import Team from './Team/Team';
-import CreateTeam from './Team/CreateTeam/CreateTeam';
 import check from '../../images/check-icon.png';
 import deleteIcon from '../../images/delete-icon.png';
 import editIcon from '../../images/edit-icon.png';
 import ballPlay from '../../images/ball-play.png';
 import captain from '../../images/captain.png';
+import Team from './Team/Team';
+import ChooseTshirt from '../ChooseTshirt/ChooseTshirt';
+import CreateTeam from './Team/CreateTeam/CreateTeam';
 import Users from '../../Library/Users';
+import './CreateMatch.scss';
+
 
 class CreateMatch extends Component { 
     constructor () {
         super();
         this.state = {
             addPlayer: false,
+            addShirt: false,
             createTeam: false,
             name: '',
             nickname: '',
@@ -31,6 +34,8 @@ class CreateMatch extends Component {
             namePlayer: '',
             numberPlayer: '',
             editPlayer: false,
+            containerConfigureMatch: false,
+            
         }
     }
 
@@ -44,6 +49,14 @@ class CreateMatch extends Component {
     toggleAddPlayer = () => {
         this.setState({
             addPlayer: !this.state.addPlayer,
+            addShirt: false,
+        })
+    };
+
+    toggleChooseShirt = () => {
+        this.setState({
+            addShirt: !this.state.addShirt,
+            addPlayer: false,
         })
     };
 
@@ -54,10 +67,11 @@ class CreateMatch extends Component {
     };
 
     hideInfoInput = () => {
-        const { name, nickname, players } = this.state;
-        if( !name && !nickname && !players ){
+        const { name, nickname, players, containerInput, containerConfigureMatch } = this.state;
+        if( name && nickname && players ){
             this.setState({
-                containerInput:!this.state.containerInput,
+                containerInput:!containerInput,
+                containerConfigureMatch: !containerConfigureMatch,
             });
         }
     };
@@ -85,7 +99,7 @@ class CreateMatch extends Component {
     };
 
     render() {
-        const { name, containerInput, createTeam, addPlayer, nickname, players, editPlayer } = this.state;
+        const { name, containerInput, createTeam, addPlayer, nickname, players, editPlayer, addShirt, containerConfigureMatch } = this.state;
         return (
             <div className="match">
                 <span className="match-header">
@@ -98,7 +112,7 @@ class CreateMatch extends Component {
                 </span>
                 <section className="match-main">
                     {containerInput ? <span id="infoTeam" className="match-team">
-                        <input className="match-team__input" type="text" placeholder="Nombre de tu Equipo" name="name" value={name} onChange={this.handleOnChange} />
+                        <input className="match-team__input" minlength="4" maxlength="23" type="text" placeholder="Nombre de tu Equipo" name="name" value={name} onChange={this.handleOnChange} />
                         <input className="match-team__input" type="text" placeholder="Alias de tu  Equipo" name="nickname" value={nickname}  onChange={this.handleOnChange}/>
                         <input className="match-team__input match-team__input--number" type="number" min="5" max="20" placeholder="Jugadores" name="players" value={players}  onChange={this.handleOnChange}/>
                         <span className="match-team__line"> 4-3-2-1</span>
@@ -118,14 +132,21 @@ class CreateMatch extends Component {
                     : ''}
                 </section>
                 <section className="match-configure">
-                    <img className="match-configure__btn" src={player} alt="Lista jugadores" onClick={this.toggleAddPlayer} />
-                    <img className="match-configure__btn" src={shirts} alt="Uniforme" />
-                    <img className="match-configure__btn" src={field} alt="campo de juego" />
-                    <img className="match-configure__btn" src={calendar} alt="fecha y lugar" />
-                    <img className="match-configure__btn" src={configure} alt="configuracion" />
-                    <img className="match-configure__btn" src={close} alt="cerrar" />
+                    {containerConfigureMatch ? 
+                    <span className="match-option" >
+                        <img className="match-option__btn" src={player} alt="Lista jugadores" onClick={this.toggleAddPlayer} />
+                        <img className="match-option__btn" src={shirts} alt="Uniforme" onClick={this.toggleChooseShirt} />
+                        <img className="match-option__btn" src={field} alt="campo de juego" />
+                        <img className="match-option__btn" src={calendar} alt="fecha y lugar" />
+                        <img className="match-option__btn" src={configure} alt="configuracion"/>
+                        <img className="match-option__btn" src={check} alt="confirmar" /> 
+                    </span> : ""}
+                    <span className="match-close" >
+                        <img className="match-close__btn" src={close} alt="cerrar" />
+                    </span>
                 </section>
                 {addPlayer ? <Team showCreateTeam={this.showCreateTeam} createTeam={createTeam} /> : ''}
+                {addShirt ? <ChooseTshirt /> : ''}
             </div>
         );
     }

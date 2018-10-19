@@ -1,5 +1,4 @@
 import React from 'react';
-import './SessionUser.scss';
 import create from '../../images/create-icon.png';
 import team from '../../images/team-icon.png';
 import search from '../../images/search-icon.png';
@@ -9,6 +8,7 @@ import news from '../../images/news-icon.png';
 import user from '../../images/user-icon.png';
 import logo from '../../images/logo-white.png';
 import next from '../../images/nexts-icon.png';
+import './SessionUser.scss';
 
 
 const Session = () => {

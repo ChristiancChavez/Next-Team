@@ -1,0 +1,33 @@
+.container {
+    position: relative;
+    background: lightgray;
+    .arrow-left {
+        position: absolute;
+        top: 28%;
+        left: 1%;
+        width: 1.5%;
+        background: rgba(0, 0, 0, 0.459);
+        padding: 0.5%;
+        border-radius: 15%; 
+        cursor: pointer;  
+        &:hover {
+            filter: brightness();
+            background: rgba(0, 0, 0, 0.705);
+        }
+        
+    }
+    .arrow-right {
+        position: absolute;
+        top: 28%;
+        right: 1%;
+        width: 1.5%;
+        background: rgba(0, 0, 0, 0.459);
+        padding: 0.5%;
+        border-radius: 15%; 
+        cursor: pointer; 
+        &:hover {
+            filter: brightness();
+            background: rgba(0, 0, 0, 0.705);
+        } 
+    }
+}

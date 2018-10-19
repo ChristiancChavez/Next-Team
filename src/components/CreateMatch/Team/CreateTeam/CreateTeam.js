@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-
 import close from '../../../../images/delete-team.png';
 import ballPlay from '../../../../images/ball-play.png';
 import captain from '../../../../images/captain.png';
 import check from '../../../../images/check-icon.png';
-
 import './CreateTeam.scss';
 
 class CreateTeam extends Component {
