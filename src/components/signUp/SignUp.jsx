@@ -3,8 +3,8 @@ import {
   Link,
   withRouter,
 } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { auth } from '../../config/firebase';
-
 import * as routes from '../../shared/constants/routes';
 
 const INITIAL_STATE = {
@@ -15,12 +15,15 @@ const INITIAL_STATE = {
   error: null,
 };
 
-const SignUpPage = ({ history }) => (
-  <div>
-    <h1>Sign Up</h1>
-    <SingUpForm history={history} />
-  </div>
-);
+const SignUpPage = ({ history }) => {
+  console.log(history);
+  return (
+    <div>
+      <h1>Sign Up</h1>
+      <SingUpForm history={history} />
+    </div>
+  );
+};
 
 
 class SingUpForm extends Component {
@@ -40,7 +43,7 @@ class SingUpForm extends Component {
 
   onSubmit = (event) => {
     const {
-      username,
+      // username,
       email,
       passwordOne,
     } = this.state;
@@ -51,6 +54,7 @@ class SingUpForm extends Component {
 
     auth.doCreateUserWithEmailAndPassword(email, passwordOne)
       .then((authUser) => {
+        console.log(authUser);
         this.setState({ ...INITIAL_STATE });
         history.push(routes.HOME);
       })
@@ -79,33 +83,33 @@ class SingUpForm extends Component {
       <form onSubmit={this.onSubmit}>
         <input
           value={username}
-          onChange={(event) => this.byProperKey('username', event.target.value)}
+          onChange={event => this.byProperKey('username', event.target.value)}
           type="text"
           placeholder="Full Name"
         />
         <input
           value={email}
-          onChange={(event) => this.byProperKey('email', event.target.value)}
+          onChange={event => this.byProperKey('email', event.target.value)}
           type="text"
           placeholder="Email Address"
         />
         <input
           value={passwordOne}
-          onChange={(event) => this.byProperKey('passwordOne', event.target.value)}
+          onChange={event => this.byProperKey('passwordOne', event.target.value)}
           type="password"
           placeholder="Password"
         />
         <input
           value={passwordTwo}
-          onChange={(event) => this.byProperKey('passwordTwo', event.target.value)}
+          onChange={event => this.byProperKey('passwordTwo', event.target.value)}
           type="password"
           placeholder="Confirm Password"
         />
-          <button disabled={isInvalid} type="submit">
-              Sign Up
-          </button>
+        <button disabled={isInvalid} type="submit">
+          Sign Up
+        </button>
 
-          {error && <p>{error.message}</p>}
+        {error && <p>{error.message}</p>}
       </form>
     );
   }
@@ -113,15 +117,23 @@ class SingUpForm extends Component {
 
 const SignUpLink = () => (
   <p>
-    Don't have an account?
+    No tienes una cuenta?
     {' '}
     <Link to={routes.SIGN_UP}>Sign Up</Link>
   </p>
 );
 
+SignUpPage.propTypes = {
+  history: PropTypes.shape({}).isRequired,
+};
+
+SingUpForm.propTypes = {
+  history: PropTypes.shape({}).isRequired,
+};
+
 export default withRouter(SignUpPage);
 
 export {
   SingUpForm,
-  SignUpLink
-}
+  SignUpLink,
+};

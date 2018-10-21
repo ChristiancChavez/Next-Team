@@ -9,7 +9,8 @@ import registerServiceWorker from './registerServiceWorker';
 const rootElement = document.getElementById('root');
 
 ReactDOM.render(
-    <Root store={store} history={history}/>,
-    rootElement
+  // eslint-disable-next-line react/jsx-filename-extension
+  <Root store={store} history={history} />,
+  rootElement,
 );
 registerServiceWorker();

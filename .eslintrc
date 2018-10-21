@@ -5,5 +5,8 @@
     "jest": true,
     "browser": true,
     "es6": true
-  }
+  },
+  "rules": {
+    "allowTernary": true
+}
 }

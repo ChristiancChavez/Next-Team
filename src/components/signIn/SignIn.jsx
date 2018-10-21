@@ -42,7 +42,7 @@ class SignInForm extends Component {
 
     const { history } = this.props;
 
-    auth.doSignInWithEmailAndPassword(email, password)
+    auth().doSignInWithEmailAndPassword(email, password)
       .then(() => {
         this.setState({ ...INITIAL_STATE });
         history.push(routes.HOME);
@@ -66,7 +66,7 @@ class SignInForm extends Component {
     || email === '';
 
     return (
-      <form>
+      <form onSubmit={this.onSubmit}>
         <input
           value={email}
           onChange={event => this.byProperKey('email', event.target.value)}
