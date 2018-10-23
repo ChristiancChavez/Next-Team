@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+import * as playersActions from '../../modules/players/actions';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import logo from '../../images/logo-white.png';
 import blueShirt from '../../images/shirt-blue.png';
 import redShirt from '../../images/shirt-red.png';
 import facebookIcon from '../../images/facebook.png';
 import googleIcon from '../../images/google.png';
 import './MainContent.scss';
-import * as playersActions from '../../modules/players/actions';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+
 
 class MainContent extends Component { 
 

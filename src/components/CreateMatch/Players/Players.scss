@@ -1,0 +1,40 @@
+.players {
+    height: 86%;
+    width: 34.5%;
+    position: absolute;
+    display: flex;
+    flex-flow: column;
+    top: 4%;
+    left: 33%;
+    justify-content: space-between;
+    .position {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-around;
+        &-player {
+            display: flex;
+            flex-flow: column;
+            justify-content: space-around;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            &__photo {
+                width: 38px;
+                height: 38px;
+                padding: 4px;
+                background: red;
+                border-radius: 50%;
+                margin-bottom: 5%;
+            }
+            &__info {
+                font-size: 7.5px;
+                font-weight: bold;
+                color: black;
+                background: lightgray;
+                padding: 3px 10px;
+                border-radius: 6px;
+                margin-bottom: 4%;
+            }
+        }
+        
+    }   
+} 

@@ -13,9 +13,9 @@
             width: 105%;
             font-size: 1.5em;
             font-weight: bold;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             background: rgb(197, 156, 22);
-            padding: 1% 0%;
+            padding: 1% 0% 1% 8%;
         }
         &__icon {
             background: black;
@@ -35,23 +35,23 @@
         flex-flow: column;
         position: relative;
         &__img {
-            width: 48%;
+            width: 50%;
             align-self: center;
-        }    
+        }   
     }
     &-name {
         position: absolute;
-        bottom: 4%;
-        left: 37%;
+        height: 40px;
+        bottom: 0.5%;
+        left: 35%;
         color: black;
         font-family: 'Poppins', sans-serif;
         font-weight: bold;
-        width: 26%;
+        width: 30%;
         background: white;
         display: flex;
         justify-content: center;
         flex-flow: row nowrap;
-        padding: 0.5% 0%;
         box-shadow: 6px 5px 6px rgb(53, 46, 46);
         align-items: center;
         border-radius: 6px;
@@ -61,7 +61,7 @@
         }
         &__shield {
             width: 8%;
-            height: 20%;
+            height: 60%;
         }
     }
     &-team {
@@ -107,14 +107,34 @@
     &-configure {
         margin-top: 10px;
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         flex-flow: row nowrap;
         padding: 8px 15px;
         background: black;
         align-items: center;
+    }
+    &-option {
+        width: 90%;
+        padding-left: 3.5%;
+        display: flex;
+        justify-content: space-between;
+        flex-flow: row nowrap;
+        align-items: center;
         &__btn {
             width: 3%;
             height: 3%; 
+            cursor: pointer;
+        }
+    }
+    &-close {
+        width: 10%;
+        display: flex;
+        justify-content: center;
+        flex-flow: row nowrap;
+        align-items: center;
+        &__btn {
+            width: 28%;
+            height: 28%; 
             cursor: pointer;
         }
     }
