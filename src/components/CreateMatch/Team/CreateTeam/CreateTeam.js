@@ -21,7 +21,7 @@ class CreateTeam extends Component {
                     <span className="save__text">Guardar</span>
                     <img className="save__icon" src={check} alt="aprobar este Equipo"/>
                 </span> 
-                {editPlayer ? <span className="edit">
+                {editPlayer && <span className="edit">
                     <input className="edit__input"  type="text" placeholder="Editar Jugador" />
                     <input className="edit__input edit__input--number" type="text" placeholder="#" />
                     <span className="edit-add edit-add--middle">
@@ -29,7 +29,7 @@ class CreateTeam extends Component {
                         <img className="edit-add__icon" src={captain} alt="adicionar capitán"/>
                         <img className="edit-add__icon" src={check} alt="confirmar cambio"/>
                     </span> 
-                </span> : ''}  
+                </span>}  
             </div>       
         )
     }

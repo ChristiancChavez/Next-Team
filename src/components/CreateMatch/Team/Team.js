@@ -14,7 +14,7 @@ class Team extends Component {
         const { createTeam, showCreateTeam } = this.props;
         return(
             <div className="team">
-                {createTeam ? <span className="info">
+                {createTeam && <span className="info">
                     <input className="info__input"  type="text" placeholder="Nuevo Jugador" name="player" />
                     <input className="info__input info__input--number" type="text" placeholder="#" name="number" />
                     <span className="info-add">
@@ -22,7 +22,7 @@ class Team extends Component {
                         <img className="info-add__icon " src={captain} alt="adicionar capitán"/>
                         <img className="info-add__icon" src={ballPlay} alt="adicionar balón"/>
                     </span> 
-                </span> : ''}
+                </span>}
                 <span className="team-option">
                     <h1 className="team-option__title">Crea tu Equipo</h1>
                     <img className="team-option__icon" src={addTeamList} alt="adicionar lista jugadores" onClick={showCreateTeam}/>
