@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import './Shirt.scss';
 
 
-function Shirt({ fill }) {
+function Shirt({ fill, handlerChangeColorShirt }) {
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 508.846 508.846" className="options__shirt" fill={fill}>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 508.846 508.846" className="options__shirt" fill={fill} onClick={() => handlerChangeColorShirt(fill)}>
             <path fill={fill} d="M53.28 152.274v52.599c2.542 3.182 16.777 16.859 71.781 12.352A954.904 954.904 0 0 0 85.152 74.267c-11.758 8.714-31.872 30.528-31.872 78.007z"/>
             <path fill={fill} d="M300.137 156.526l18.286 12.187 18.286-12.187v-40.832l-36.572.009z"/>
             <path fill={fill} d="M254.423 78.473c39.131-14.729 57.39-55.771 62.665-70.034L308.649 0a107.88 107.88 0 0 1-54.226 15.131A108.318 108.318 0 0 1 200.215.091l-8.439 8.366c5.339 14.318 23.707 55.342 62.647 70.016z"/>

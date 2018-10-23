@@ -8,11 +8,11 @@ import './ChooseTshirt.scss';
 class ChooseTshirt extends Component {
 
     state = {
-        array: 0,
+        array: 0,  
     }
 
     defaultListShirt = () => {
-        return colors[this.state.array].map((color) => <Shirt fill={color} key={color} />);
+        return colors[this.state.array].map((color) => <Shirt fill={color} key={color}  handlerChangeColorShirt={this.props.handlerChangeColorShirt}  />);
     };
 
     moveRightArrayColors = () => {

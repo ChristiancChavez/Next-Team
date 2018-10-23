@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import Team from './Team/Team';
+import ChooseTshirt from '../ChooseTshirt/ChooseTshirt';
+import CreateTeam from './Team/CreateTeam/CreateTeam';
+import Users from '../../Library/Users';
+import Players from './Players/Players';
 import create from '../../images/create-icon.png';
 import soccerField from '../../images/soccer-field.jpg';
 import player from '../../images/player.png';
@@ -13,10 +18,6 @@ import deleteIcon from '../../images/delete-icon.png';
 import editIcon from '../../images/edit-icon.png';
 import ballPlay from '../../images/ball-play.png';
 import captain from '../../images/captain.png';
-import Team from './Team/Team';
-import ChooseTshirt from '../ChooseTshirt/ChooseTshirt';
-import CreateTeam from './Team/CreateTeam/CreateTeam';
-import Users from '../../Library/Users';
 import './CreateMatch.scss';
 
 
@@ -35,7 +36,8 @@ class CreateMatch extends Component {
             numberPlayer: '',
             editPlayer: false,
             containerConfigureMatch: false,
-            
+            showPlayersField: false,
+            colorSelected: '',
         }
     }
 
@@ -77,7 +79,7 @@ class CreateMatch extends Component {
     };
 
     showPlayersList = () => {
-        return Users.map((singlePLayer) => <span className="list-player" key={singlePLayer.name}>
+        return Users.map((singlePLayer) => <span className="list-player" key={singlePLayer.name}> 
                 <span className="list-player-options">
                     <img className="list-player-options__option" src={captain} alt="capitan"/>
                     <img className="list-player-options__option" src={ballPlay} alt="capitan"/>
@@ -98,8 +100,24 @@ class CreateMatch extends Component {
         })
     };
 
+    handlershowPlayersField = () => {
+        const { showPlayersField, createTeam } = this.state;
+        this.setState({
+            showPlayersField: !showPlayersField,
+            createTeam: !createTeam,
+        })
+    }
+
+    handlerChangeColorShirt = (color) => {
+        console.log(color)
+        this.setState({
+            colorSelected: color,
+        })
+    }
+
     render() {
-        const { name, containerInput, createTeam, addPlayer, nickname, players, editPlayer, addShirt, containerConfigureMatch } = this.state;
+        const { name, containerInput, createTeam, addPlayer, nickname, players, editPlayer, addShirt, containerConfigureMatch, 
+            showPlayersField, colorSelected } = this.state;
         return (
             <div className="match">
                 <span className="match-header">
@@ -112,8 +130,8 @@ class CreateMatch extends Component {
                 </span>
                 <section className="match-main">
                     {containerInput ? <span id="infoTeam" className="match-team">
-                        <input className="match-team__input" minlength="4" maxlength="23" type="text" placeholder="Nombre de tu Equipo" name="name" value={name} onChange={this.handleOnChange} />
-                        <input className="match-team__input" type="text" placeholder="Alias de tu  Equipo" name="nickname" value={nickname}  onChange={this.handleOnChange}/>
+                        <input className="match-team__input" maxLength="20" type="text" placeholder="Nombre de tu Equipo" name="name" value={name} onChange={this.handleOnChange} />
+                        <input className="match-team__input" type="text" maxLength="20" placeholder="Alias de tu  Equipo" name="nickname" value={nickname}  onChange={this.handleOnChange}/>
                         <input className="match-team__input match-team__input--number" type="number" min="5" max="20" placeholder="Jugadores" name="players" value={players}  onChange={this.handleOnChange}/>
                         <span className="match-team__line"> 4-3-2-1</span>
                         <img className="match-team__check" src={check} alt="validar información" onClick={this.hideInfoInput} />
@@ -123,13 +141,15 @@ class CreateMatch extends Component {
                         <img className="match-name__shield" src={shield} alt="escudo del equipo" />
                     </span>
                     <img className="match-main__img" src={soccerField} alt="campo de juego" />
-
+                    {showPlayersField ? <Players colorSelected={colorSelected} /> : ''}
                     {createTeam ? <CreateTeam 
+                        handlershowPlayersField={this.handlershowPlayersField}
                         showCreateTeam={this.showCreateTeam} 
                         hidecreateTeam={createTeam} 
                         playerList={this.showPlayersList} 
                         editPlayer={editPlayer}/> 
-                    : ''}
+                        : ''
+                    }
                 </section>
                 <section className="match-configure">
                     {containerConfigureMatch ? 
@@ -146,7 +166,7 @@ class CreateMatch extends Component {
                     </span>
                 </section>
                 {addPlayer ? <Team showCreateTeam={this.showCreateTeam} createTeam={createTeam} /> : ''}
-                {addShirt ? <ChooseTshirt /> : ''}
+                {addShirt ? <ChooseTshirt handlerChangeColorShirt={this.handlerChangeColorShirt}/> : ''}
             </div>
         );
     }

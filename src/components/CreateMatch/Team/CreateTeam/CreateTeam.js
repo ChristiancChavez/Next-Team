@@ -8,7 +8,7 @@ import './CreateTeam.scss';
 class CreateTeam extends Component {
 
     render(){
-        const { showCreateTeam, playerList, editPlayer } = this.props;
+        const { showCreateTeam, playerList, editPlayer, handlershowPlayersField } = this.props;
         return (
             <div className="popup">  
                 <span className="close">
@@ -17,7 +17,7 @@ class CreateTeam extends Component {
                 <span className="list">
                     {playerList()}
                 </span>
-                <span className="save">
+                <span className="save" onClick={handlershowPlayersField}>
                     <span className="save__text">Guardar</span>
                     <img className="save__icon" src={check} alt="aprobar este Equipo"/>
                 </span> 

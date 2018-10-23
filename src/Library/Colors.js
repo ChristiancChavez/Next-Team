@@ -1,7 +1,7 @@
 const colors = [
-    ["Gray", "Aqua", "Chocolate", "Coral", "Crimson", "DarkMagenta", "DarkSeaGreen","GoldenRod", "Lavender", "LightGreen ", "Peru"],
-    ["YellowGreen", "Tomato", "SpringGreen", "SlateBlue", "Sienna", "SkyBlue", "OliveDrab","OrangeRed", "Navy", "Lime ", "Khaki"],
-    ["Brown", "Orange", "Yellow", "Red", "Purple", "Black", "DeepPink", "Blue", "Green", "Cyan", "Silver" ]
+    ["Brown", "Orange", "Yellow", "Red", "Khaki", "OrangeRed", "GoldenRod", "Crimson", "Chocolate", "Peru", "Sienna"],
+    ["Tomato","Gray", "Silver", "Black", "Blue", "SkyBlue", "SlateBlue", "Cyan", "Navy","CornflowerBlue", "Coral"],
+    ["YellowGreen", "Green", "SpringGreen", "LightGreen", "Lime", "OliveDrab", "DarkSeaGreen", "Lavender","DarkMagenta","DarkOrchid", "DeepPink"]
 ];
 
 
