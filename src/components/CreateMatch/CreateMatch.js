@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Team from './Team/Team';
 import ChooseTshirt from '../ChooseTshirt/ChooseTshirt';
+import ChooseField from '../ChooseField/ChooseField';
 import CreateTeam from './Team/CreateTeam/CreateTeam';
 import Users from '../../Library/Users';
 import Players from './Players/Players';
@@ -26,6 +27,7 @@ class CreateMatch extends Component {
     state = {
         addPlayer: false,
         addShirt: false,
+        addField: false,
         createTeam: false,
         name: '',
         nickname: '',
@@ -37,6 +39,7 @@ class CreateMatch extends Component {
         containerConfigureMatch: false,
         showPlayersField: false,
         colorSelected: '',
+        fieldToShow: soccerField,
     }
 
 
@@ -51,6 +54,7 @@ class CreateMatch extends Component {
         this.setState({
             addPlayer: !this.state.addPlayer,
             addShirt: false,
+            addField: false,
         })
     };
 
@@ -58,6 +62,15 @@ class CreateMatch extends Component {
         this.setState({
             addShirt: !this.state.addShirt,
             addPlayer: false,
+            addField: false,
+        })
+    };
+
+    toggleChooseField = () => {
+        this.setState({
+            addField: !this.state.addField,
+            addPlayer: false,
+            addShirt: false,
         })
     };
 
@@ -113,9 +126,15 @@ class CreateMatch extends Component {
         })
     }
 
+    handlerFieldToShow = (field) => {
+        this.setState({
+            fieldToShow: field,
+        })
+    }
+
     render() {
-        const { name, containerInput, createTeam, addPlayer, nickname, players, editPlayer, addShirt, containerConfigureMatch, 
-            showPlayersField, colorSelected } = this.state;
+        const { name, containerInput, createTeam, addPlayer, addField, nickname, players, editPlayer, addShirt, containerConfigureMatch, 
+            showPlayersField, colorSelected, fieldToShow } = this.state;
         return (
             <div className="match">
                 <span className="match-header">
@@ -138,7 +157,7 @@ class CreateMatch extends Component {
                         <span className="match-name__name">{name}</span>
                         <img className="match-name__shield" src={shield} alt="escudo del equipo" />
                     </span>
-                    <img className="match-main__img" src={soccerField} alt="campo de juego" />
+                    <img className="match-main__img" src={fieldToShow} alt="campo de juego" />
                     {showPlayersField && <Players colorSelected={colorSelected} /> }
                     {createTeam && <CreateTeam 
                         handlershowPlayersField={this.handlershowPlayersField}
@@ -153,7 +172,7 @@ class CreateMatch extends Component {
                     <span className="match-option" >
                         <img className="match-option__btn" src={player} alt="Lista jugadores" onClick={this.toggleAddPlayer} />
                         <img className="match-option__btn" src={shirts} alt="Uniforme" onClick={this.toggleChooseShirt} />
-                        <img className="match-option__btn" src={field} alt="campo de juego" />
+                        <img className="match-option__btn" src={field} alt="campo de juego" onClick={this.toggleChooseField} />
                         <img className="match-option__btn" src={calendar} alt="fecha y lugar" />
                         <img className="match-option__btn" src={configure} alt="configuracion"/>
                         <img className="match-option__btn" src={check} alt="confirmar" /> 
@@ -164,6 +183,7 @@ class CreateMatch extends Component {
                 </section>
                 {addPlayer && <Team showCreateTeam={this.showCreateTeam} createTeam={createTeam} />}
                 {addShirt && <ChooseTshirt handlerChangeColorShirt={this.handlerChangeColorShirt}/>}
+                {addField && <ChooseField handlerFieldToShow={this.handlerFieldToShow}/>}
             </div>
         );
     }
