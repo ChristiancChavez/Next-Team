@@ -1,0 +1,142 @@
+.match {
+    display: flex;
+    flex-flow: column;
+    &-header {
+        font-family: 'Poppins', sans-serif;
+        display: flex ;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        margin: 0px;
+        color: black;
+        text-align: center;
+        &__title { 
+            width: 105%;
+            font-size: 1.5em;
+            font-weight: bold;
+            letter-spacing: 2px;
+            background: rgb(197, 156, 22);
+            padding: 1% 0% 1% 8%;
+        }
+        &__icon {
+            background: black;
+            border-left: solid 5px white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+           &-img {
+            width: 30%;
+            height: 50%;
+           }
+        }
+    }
+    &-main {
+        display: flex;
+        justify-content: center;
+        flex-flow: column;
+        position: relative;
+        &__img {
+            width: 50%;
+            align-self: center;
+        }   
+    }
+    &-name {
+        position: absolute;
+        height: 40px;
+        bottom: 0.5%;
+        left: 35%;
+        color: black;
+        font-family: 'Poppins', sans-serif;
+        font-weight: bold;
+        width: 30%;
+        background: white;
+        display: flex;
+        justify-content: center;
+        flex-flow: row nowrap;
+        box-shadow: 6px 5px 6px rgb(53, 46, 46);
+        align-items: center;
+        border-radius: 6px;
+        &__name {
+            margin-right: 2%;
+            font-size: 1.5em;
+        }
+        &__shield {
+            width: 8%;
+            height: 60%;
+        }
+    }
+    &-team {
+        display: flex;
+        justify-content: space-around;
+        padding: 1%;
+        background: lightgray;
+        font-family: 'Poppins', sans-serif;
+        font-size: 2em;
+        margin-bottom: 10px;
+        align-items: center;
+        &__input { 
+            width: 20%;
+            padding: 5px;
+            text-align: center;
+            color: black;
+            border-radius: 6px;
+            border: rgb(197, 156, 22) solid 1px;
+            background: white;
+            &--number {
+                width: 10%;
+            }
+            &:focus {
+                outline: none;
+            }
+        }
+        &__check{
+            width: 2%;
+            height: 2%;
+            cursor: pointer;
+        }
+        &__line {
+            padding: 5px;
+            text-align: center;
+            color: black;
+            border-radius: 6px;
+            border: rgb(197, 156, 22) solid 1px;
+            background: white;
+            font-size: 12px;
+            width: 5%;
+        }
+    }
+    &-configure {
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        flex-flow: row nowrap;
+        padding: 8px 15px;
+        background: black;
+        align-items: center;
+    }
+    &-option {
+        width: 90%;
+        padding-left: 3.5%;
+        display: flex;
+        justify-content: space-between;
+        flex-flow: row nowrap;
+        align-items: center;
+        &__btn {
+            width: 3%;
+            height: 3%; 
+            cursor: pointer;
+        }
+    }
+    &-close {
+        width: 10%;
+        display: flex;
+        justify-content: center;
+        flex-flow: row nowrap;
+        align-items: center;
+        &__btn {
+            width: 28%;
+            height: 28%; 
+            cursor: pointer;
+        }
+    }
+    
+}

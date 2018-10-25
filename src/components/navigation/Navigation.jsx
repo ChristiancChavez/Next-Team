@@ -17,6 +17,7 @@ const NavigationAuth = () => (
   <ul>
     <li><Link to={routes.HOME}>Home</Link></li>
     <li><Link to={routes.ACCOUNT}>Account</Link></li>
+    <li><Link to={routes.CREATE_MATCH}>Create Match</Link></li>
     <li><SignOutButton /></li>
   </ul>
 );

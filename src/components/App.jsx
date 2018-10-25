@@ -7,6 +7,7 @@ import Account from './account/Account';
 import PasswordForgetPage from './passwordForget/PasswordForget';
 import SingInPage from './signIn/SignIn';
 import SignUpPage from './signUp/SignUp';
+import CreateMatch from './CreateMatch/CreateMatch';
 import * as routes from '../shared/constants/routes';
 import Navigation from './navigation/Navigation';
 import { firebase } from '../config/firebase';
@@ -66,7 +67,11 @@ class App extends Component {
             path={routes.SIGN_UP}
             component={SignUpPage}
           />
-
+          <Route
+            exact
+            path={routes.CREATE_MATCH}
+            component={CreateMatch}
+          />
         </main>
       </div>
     );

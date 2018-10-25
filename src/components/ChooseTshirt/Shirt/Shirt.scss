@@ -1,0 +1,12 @@
+.options {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1% 3%;
+    flex-flow: row nowrap;
+    &__shirt {
+        width: 4%;
+        height: 4%;
+        cursor: pointer;
+    }
+}

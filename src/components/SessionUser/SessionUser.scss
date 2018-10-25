@@ -1,0 +1,75 @@
+.session {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: 'Poppins', sans-serif;
+    &__title {
+        font-size: 150%;
+        padding: 1%;
+        color: black;
+        background: rgb(197, 156, 22);
+        text-align: center;
+        margin: 0px;
+    }
+    .board {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        text-align: center;
+        background-image: url('../../images/background1.jpg');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        padding: 3% 30%;
+    .options {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        padding: 10px;
+    .option {
+        display: flex;
+        flex-flow: column;
+        text-align: center;
+        padding: 10px;
+        background: lightgray;
+        border-radius: 12px;
+        border: solid lightgoldenrodyellow 1px;
+        justify-content: space-around;
+        width: 25%;
+        margin-bottom: 15px;
+        cursor: pointer;
+        &__img {
+            align-self: center;
+            height: 50%;
+        }
+        &__title {
+            font-size: 80%;
+            margin-bottom: 10px;
+            font-weight: bolder;
+        }
+    }
+    }
+    }
+    &__profile {
+        display: flex;
+        justify-content: space-between;
+        flex-flow: row nowrap;
+        padding: 15px;
+        background: black;
+        align-items: center;
+        &-news {
+            width: 3%;
+            height: 3%; 
+            cursor: pointer;
+        }
+        &-logo {
+            width: 150px;
+            height: 30px; 
+            cursor: pointer;
+        }
+        &-user {
+            width: 3%;
+            height: 3%; 
+            cursor: pointer;
+        }
+    }
+}
