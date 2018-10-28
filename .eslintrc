@@ -1,0 +1,17 @@
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "env": {
+    "jest": true,
+    "browser": true,
+    "es6": true
+  },
+  "rules": {
+    "arrow-parens": "off",
+    "comma-dangle": "off",
+    "function-paren-newline": "off",
+    "max-len": [1, 120],
+    "no-param-reassign": "off",
+    "react/require-default-props": "off"
+  }
+}
