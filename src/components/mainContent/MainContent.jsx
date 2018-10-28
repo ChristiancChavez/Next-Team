@@ -39,8 +39,6 @@ class MainContent extends Component {
           const { user } = result;
 
           this.setState({ user });
-
-          console.log(user);
         }).catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
@@ -66,12 +64,24 @@ class MainContent extends Component {
             <span className="principal-facebook">
               <img className="principal-facebook__shirt" src={blueShirt} alt="" />
               <img className="principal-facebook__icon" src={facebookIcon} alt="" />
-              <span className="principal-facebook__text" onClick={this.loginFacebook} role="presentation">Ingresa con Facebook</span>
+              <span
+                className="principal-facebook__text"
+                onClick={this.loginFacebook}
+                role="presentation"
+              >
+                Ingresa con Facebook
+              </span>
             </span>
             <span className="principal-google">
               <img className="principal-google__shirt" src={redShirt} alt="" />
               <img className="principal-google__icon" src={googleIcon} alt="" />
-              <span className="principal-google__text" onClick={this.loginGoogle} role="presentation">Ingresa con Google+</span>
+              <span
+                className="principal-google__text"
+                onClick={this.loginGoogle}
+                role="presentation"
+              >
+                Ingresa con Google+
+              </span>
             </span>
           </span>
           <button type="button" onClick={this.logout}>out</button>
