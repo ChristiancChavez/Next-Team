@@ -57,6 +57,7 @@ class CreateMatch extends Component {
             addPlayer: !this.state.addPlayer,
             addShirt: false,
             addField: false,
+            addSchedule: false,
         })
     };
 
@@ -65,6 +66,7 @@ class CreateMatch extends Component {
             addShirt: !this.state.addShirt,
             addPlayer: false,
             addField: false,
+            addSchedule: false,
         })
     };
 
@@ -73,6 +75,7 @@ class CreateMatch extends Component {
             addField: !this.state.addField,
             addPlayer: false,
             addShirt: false,
+            addSchedule: false,
         })
     };
 
