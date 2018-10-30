@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "connected-react-router": "^4.5.0",
-    "eslint": "^5.8.0",
     "eslint-plugin-babel": "^5.2.1",
     "firebase": "^5.5.3",
     "history": "^4.7.2",
