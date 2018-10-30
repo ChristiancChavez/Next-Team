@@ -20,13 +20,13 @@ class Schedule extends Component {
     console.log('saved', this.state.m.format('llll'));
   };
 
-  onMarkerClick = (props, marker, e) =>
+  onMarkerClick = (props, marker, e) => {
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
       showingInfoWindow: true
     });
- 
+  }
   onMapClicked = (props) => {
     if (this.state.showingInfoWindow) {
       this.setState({
