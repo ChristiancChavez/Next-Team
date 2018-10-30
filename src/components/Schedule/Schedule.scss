@@ -1,0 +1,116 @@
+@import 'calendar';
+@import 'time';
+@import 'slider';
+
+.im-btn {
+  display: inline-block;
+  background-color: #ffffff;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  line-height: 1;
+
+  &:before {
+    margin-right: 6px;
+  }
+}
+
+.input {
+    background: black;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    border-radius: 6px;
+    border: solid 1px #D1AC17;
+    font-size: 1em;
+    text-align: center;
+    margin-bottom: 2%;
+    width: 300px;
+}
+
+.m-input-moment {
+    display: inline-block;
+    width: 35%;
+    padding: 12px 15px;
+    border-radius: 6px;
+    border: 1px solid #D1AC17;
+    background: lightgray;
+
+    .options {
+        width: 95%;
+        display: inline-block;
+        margin-bottom: 4px;
+
+        button {
+            float: left;
+            width: 50%;
+            color: #D1AC17;
+            text-align: center;
+            font-size: 1em;
+            padding: 7px;
+            border: 1px solid #D1AC17;
+            border-radius: 3px;
+            font-family: 'Poppins', sans-serif;
+
+        &:first-child {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        &:last-child {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        &.is-active {
+            color: #ffffff;
+            background-color: #D1AC17;
+        }
+        }
+    }
+
+    .tab {
+        display: none;
+        height: 50%;
+
+        &.is-active {
+        display: block;
+        }
+    }
+
+    .tabs {
+        margin-bottom: 15px;
+    }
+
+    .btn-save {
+        display: block;
+        width: 50%;
+        background-color: #D1AC17;
+        padding: 12px 0;
+        text-align: center;
+        color: #ffffff;
+        font-size: 1em;
+        border-radius: 3px;
+        margin-left: 25%;
+    }
+}
+.picker {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    padding: 2% 0%;
+    position: relative;
+    
+    &__schedule {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 75%;
+        height: 500px;
+
+    }
+    &__place {
+        position: absolute;
+        right: 38.5%;
+        bottom: -72px;
+    }
+}
