@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Team from './Team/Team';
 import ChooseTshirt from '../ChooseTshirt/ChooseTshirt';
+import Schedule from '../Schedule/Schedule';
 import ChooseField from '../ChooseField/ChooseField';
 import CreateTeam from './Team/CreateTeam/CreateTeam';
 import Users from '../../Library/Users';
@@ -23,31 +24,30 @@ import './CreateMatch.scss';
 
 
 class CreateMatch extends Component {
-  state = {
-    addPlayer: false,
-    addShirt: false,
-    addField: false,
-    createTeam: false,
-    name: '',
-    nickname: '',
-    players: '',
-    containerInput: true,
-    // namePlayer: '',
-    // numberPlayer: '',
-    editPlayer: false,
-    containerConfigureMatch: false,
-    showPlayersField: false,
-    colorSelected: '',
-    fieldToShow: soccerField,
-  }
+    state = {
+      addPlayer: false,
+      addShirt: false,
+      addField: false,
+      addSchedule: false,
+      createTeam: false,
+      name: '',
+      nickname: '',
+      players: '',
+      containerInput: true,
+      editPlayer: false,
+      containerConfigureMatch: false,
+      showPlayersField: false,
+      colorSelected: '',
+      fieldToShow: soccerField,
+    }
 
 
-  handleOnChange = (e) => {
-    const { target: { value, name } } = e;
-    this.setState({
-      [name]: value,
-    });
-  }
+    handleOnChange = e => {
+      const { target: { value, name } } = e;
+      this.setState({
+        [name]: value
+      });
+    }
 
     toggleAddPlayer = () => {
       const { addPlayer } = this.state;
@@ -55,6 +55,7 @@ class CreateMatch extends Component {
         addPlayer: !addPlayer,
         addShirt: false,
         addField: false,
+        addSchedule: false,
       });
     };
 
@@ -64,6 +65,7 @@ class CreateMatch extends Component {
         addShirt: !addShirt,
         addPlayer: false,
         addField: false,
+        addSchedule: false,
       });
     };
 
@@ -73,6 +75,18 @@ class CreateMatch extends Component {
         addField: !addField,
         addPlayer: false,
         addShirt: false,
+        addSchedule: false,
+      });
+    };
+
+    toggleSchedule = () => {
+      const { addSchedule } = this.state;
+
+      this.setState({
+        addSchedule: !addSchedule,
+        addPlayer: false,
+        addShirt: false,
+        addField: false,
       });
     };
 
@@ -89,7 +103,7 @@ class CreateMatch extends Component {
         nickname,
         players,
         containerInput,
-        containerConfigureMatch,
+        containerConfigureMatch
       } = this.state;
 
       if (name && nickname && players) {
@@ -101,7 +115,7 @@ class CreateMatch extends Component {
     };
 
     showPlayersList = () => (
-      Users.map(singlePLayer => (
+      Users.map((singlePLayer) => (
         <span className="list-player" key={singlePLayer.name}>
           <span className="list-player-options">
             <img className="list-player-options__option" src={captain} alt="capitan" />
@@ -115,9 +129,8 @@ class CreateMatch extends Component {
             </button>
             <img className="list-player-icons__icon" src={deleteIcon} alt="eliminar jugador" />
           </span>
-        </span>
-      ))
-    );
+        </span>)
+      ));
 
     showEditPlayer = () => {
       const { editPlayer } = this.state;
@@ -161,6 +174,7 @@ class CreateMatch extends Component {
         showPlayersField,
         colorSelected,
         fieldToShow,
+        addSchedule
       } = this.state;
 
       return (
@@ -208,22 +222,20 @@ class CreateMatch extends Component {
               <button type="button" onClick={this.hideInfoInput}>
                 <img className="match-team__check" src={check} alt="validar información" />
               </button>
-            </span>
-            )}
+            </span>)}
             <span className="match-name">
               <span className="match-name__name">{name}</span>
               <img className="match-name__shield" src={shield} alt="escudo del equipo" />
             </span>
             <img className="match-main__img" src={fieldToShow} alt="campo de juego" />
             {showPlayersField && <Players colorSelected={colorSelected} /> }
-            {createTeam && (
-              <CreateTeam
-                handlershowPlayersField={this.handlershowPlayersField}
-                showCreateTeam={this.showCreateTeam}
-                hidecreateTeam={createTeam}
-                playerList={this.showPlayersList}
-                editPlayer={editPlayer}
-              />
+            {createTeam && (<CreateTeam
+              handlershowPlayersField={this.handlershowPlayersField}
+              showCreateTeam={this.showCreateTeam}
+              hidecreateTeam={createTeam}
+              playerList={this.showPlayersList}
+              editPlayer={editPlayer}
+            />
             )}
           </section>
           <section className="match-configure">
@@ -238,9 +250,15 @@ class CreateMatch extends Component {
                 <button type="button" onClick={this.toggleChooseField}>
                   <img className="match-option__btn" src={fieldOption} alt="campo de juego" />
                 </button>
-                <img className="match-option__btn" src={calendar} alt="fecha y lugar" />
-                <img className="match-option__btn" src={configure} alt="configuracion" />
-                <img className="match-option__btn" src={check} alt="confirmar" />
+                <button type="button" onClick={this.toggleSchedule}>
+                  <img className="match-option__btn" src={calendar} alt="fecha y lugar" />
+                </button>
+                <button type="button">
+                  <img className="match-option__btn" src={configure} alt="configuracion" />
+                </button>
+                <button type="button">
+                  <img className="match-option__btn" src={check} alt="confirmar" />
+                </button>
               </span>
             )}
             <span className="match-close">
@@ -250,6 +268,7 @@ class CreateMatch extends Component {
           {addPlayer && <Team showCreateTeam={this.showCreateTeam} createTeam={createTeam} />}
           {addShirt && <ChooseTshirt handlerChangeColorShirt={this.handlerChangeColorShirt} />}
           {addField && <ChooseField handlerFieldToShow={this.handlerFieldToShow} />}
+          {addSchedule && <Schedule />}
         </div>
       );
     }
