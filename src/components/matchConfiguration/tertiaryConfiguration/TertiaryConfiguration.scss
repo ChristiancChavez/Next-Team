@@ -1,0 +1,99 @@
+.tertiaryConfiguration {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 55%;
+    padding: 2%;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+    .tooltip {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        position: relative;
+        &:hover .tooltip__text {
+            visibility: visible;
+            opacity: 1;
+        }
+        &__image {
+            width: 65%;
+            margin-bottom: 20%;
+        }
+        &__text {
+            visibility: hidden;
+            width: 150%;
+            background-color: rgba(5, 22, 41, 0.534);
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 0.3s;
+            left: 90%;
+            top: 10%;
+            &::after {
+                content: "";
+                position: absolute;
+                left: -8%;
+                top: 25%;
+                border-width: 8px;
+                border-style: solid;
+                border-color: transparent rgba(5, 22, 41, 0.534) transparent transparent;
+            }
+        }
+    }
+    .container {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        width: 100%;
+        .option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            padding: 2%;
+            font-size: 1.5em;
+            border: 1px solid #D1AC17;
+            border-radius: 6px;
+            background: white;
+            position: relative;
+            cursor: pointer;
+            &:hover {
+                background: #D1AC17;
+                border: 1px solid gray;
+            }
+            &:focus {
+                outline: none;
+            }
+            &__text {
+                font-weight: bold;
+                margin: 5% 0%;
+            }
+            &__image {
+                width: 35%;
+                height: 30%;
+            }
+            &__input {
+                border: 1px solid #D1AC17;
+                border-radius: 6px;
+                text-align: center;
+                background: white;
+                padding: 2%;
+                position: absolute;
+                height: 95%;
+                width: 96%;
+                font-size: 0.7em;
+                font-weight: bold;
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+    }
+}

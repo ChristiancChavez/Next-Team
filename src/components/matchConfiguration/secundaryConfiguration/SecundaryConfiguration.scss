@@ -1,0 +1,86 @@
+.secundaryConfiguration {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    height: 250px;
+    width: 100%;
+    .option {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        width: 50%;
+        padding: 2%;
+        border: 1px solid black;
+        border-bottom: 2px solid black;
+        position: relative;
+    .tooltip {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        position: relative;
+        &:hover .tooltip__text {
+            visibility: visible;
+            opacity: 1;
+        }
+        &__image {
+            width: 55%;
+            &--big {
+                width: 60%;
+            }
+        }
+        &__text {
+            visibility: hidden;
+            width: 150%;
+            background-color: rgba(5, 22, 41, 0.534);
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 0.3s;
+            left: 90%;
+            top: 10%;
+            &::after {
+                content: "";
+                position: absolute;
+                left: -8.5%;
+                top: 25%;
+                border-width: 8px;
+                border-style: solid;
+                border-color: transparent rgba(5, 22, 41, 0.534) transparent transparent;
+            }
+        }
+    }
+        .config {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            width: 90%;
+            padding: 0.5%;
+            &__title {
+                font-size: 1.5em;
+                color: black;
+                width: 45%;
+                text-align: right;
+                &--left {
+                    margin-left: 5%;
+                }
+            }
+            &__subtitle {
+                font-size: 0.6em;
+                color: gray;
+                text-align: center;
+                width: 30%;
+                margin-top: 1%;
+            }
+            &__switch {
+                margin-top: 1%;
+            }
+        }
+    }
+}

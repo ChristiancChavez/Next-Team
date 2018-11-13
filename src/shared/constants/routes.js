@@ -5,3 +5,4 @@ export const HOME = '/';
 export const ACCOUNT = '/account';
 export const PASSWORD_FORGET = '/pw-forget';
 export const CREATE_MATCH = '/create-match';
+export const SESSION_USER = '/session-user';
