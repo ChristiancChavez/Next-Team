@@ -36,7 +36,6 @@ class App extends Component {
     return (
       <div>
         <Navigation authUser={authUser} />
-
         <main>
           <Route
             exact

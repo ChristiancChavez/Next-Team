@@ -1,0 +1,34 @@
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row nowrap;
+    padding: 0.5% 1%;
+    align-items: center;
+    background: black;
+    border-bottom: 5px solid white;
+    &__logo {
+        width: 12%;
+    }
+    &-button {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding-left: 2%;
+        width: 15%;
+        display: flex;
+        justify-content: flex-end;
+        &--center {
+            justify-content: center;
+        }
+        &:focus {
+            outline: none;
+        }
+        &__image {
+            width: 20%;
+            &--stadium {
+                width: 27%;
+            }
+        }
+    }
+
+}

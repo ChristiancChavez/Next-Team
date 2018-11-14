@@ -4,7 +4,7 @@
     justify-content: space-between;
     font-family: 'Poppins', sans-serif;
     &__title {
-        font-size: 150%;
+        font-size: 1.5em;
         padding: 1%;
         color: black;
         background: rgb(197, 156, 22);
@@ -32,14 +32,15 @@
         padding: 10px;
         background: lightgray;
         border-radius: 12px;
-        border: solid lightgoldenrodyellow 1px;
         justify-content: space-around;
         width: 25%;
+        height: 160px;
         margin-bottom: 15px;
         cursor: pointer;
         &__img {
             align-self: center;
-            height: 50%;
+            width: 60%;
+            height: 55%;
         }
         &__title {
             font-size: 80%;
@@ -53,22 +54,16 @@
         display: flex;
         justify-content: space-between;
         flex-flow: row nowrap;
-        padding: 15px;
+        padding: 1%;
         background: black;
         align-items: center;
+        border-top: 5px solid white;
         &-news {
             width: 3%;
-            height: 3%; 
-            cursor: pointer;
-        }
-        &-logo {
-            width: 150px;
-            height: 30px; 
             cursor: pointer;
         }
         &-user {
             width: 3%;
-            height: 3%; 
             cursor: pointer;
         }
     }

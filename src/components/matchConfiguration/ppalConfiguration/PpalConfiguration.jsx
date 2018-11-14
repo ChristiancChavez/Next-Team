@@ -17,8 +17,10 @@ class PpalConfiguration extends Component {
   }
 
   selectTeam = (team) => {
+    const { showTeamList } = this.state;
     this.setState({
       teamName: team,
+      showTeamList: !showTeamList,
     });
   }
 
@@ -60,7 +62,7 @@ class PpalConfiguration extends Component {
             </button>
           </span>
           <span className="challenger-search">
-            <span className="challenger-search__team">{teamName}</span>
+            <span className="challenger-search__team" readOnly>{teamName}</span>
             {showTeamList && <TeamsList selectTeam={this.selectTeam} list={teams} />}
             <button type="button" className="challenger-search__button" onClick={this.handlerShowTeamList}>
               <img className="challenger-search__icon" src={teamsList} alt="Buscar Equipo rival" />

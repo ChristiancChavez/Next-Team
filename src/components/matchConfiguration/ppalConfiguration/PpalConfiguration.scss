@@ -27,7 +27,7 @@
             &__price {
                 border-radius: 6px;
                 border: 1px solid #D1AC17;
-                background: white;
+                background: lightgray;
                 padding: 1.5% 3%;
                 text-align: center;
                 font-family: 'Poppins', sans-serif;
@@ -35,6 +35,9 @@
                 font-weight: bold;
                 color: black;
                 margin-right: 4.5%;
+                &:focus {
+                    outline: none;
+                }
             }
             &__image {
                 width: 8%;
@@ -63,7 +66,7 @@
             &__image {
                 width: 35%;
                 cursor: pointer;
-                background: white;
+                background: lightgray;
                 border: 1px solid #D1AC17;
                 padding: 5%;
                 border-radius: 6px;
@@ -82,7 +85,7 @@
             &__team {
                 border-radius: 6px;
                 border: 1px solid #D1AC17;
-                background: white;
+                background: lightgray;
                 padding: 1.5% 1%;
                 text-align: center;
                 font-family: 'Poppins', sans-serif;

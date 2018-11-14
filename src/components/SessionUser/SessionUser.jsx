@@ -5,15 +5,14 @@ import search from '../../images/search-icon.png';
 import games from '../../images/games-icon.png';
 import invitation from '../../images/invitation-icon.png';
 import news from '../../images/news-icon.png';
-import user from '../../images/user-icon.png';
-import logo from '../../images/logo-white.png';
+import closeSession from '../../images/close-session.png';
 import next from '../../images/nexts-icon.png';
 import './SessionUser.scss';
 
 
 const Session = () => (
   <div className="session">
-    <h1 className="session__title">Menu</h1>
+    <h1 className="session__title">¿Que quieres hacer?</h1>
     <span className="board">
       <section className="options">
         <span className="option">
@@ -44,8 +43,7 @@ const Session = () => (
     </span>
     <span className="session__profile">
       <img className="session__profile-news" src={news} alt="noticias" />
-      <img className="session__profile-logo" src={logo} alt="Next Team" />
-      <img className="session__profile-user" src={user} alt="usuario" />
+      <img className="session__profile-user" src={closeSession} alt="cerrar sesión" />
     </span>
   </div>
 );

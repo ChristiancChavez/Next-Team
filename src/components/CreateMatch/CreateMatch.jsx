@@ -238,8 +238,8 @@ class CreateMatch extends Component {
                 onChange={this.handleOnChange}
               />
               <span className="match-team__line"> 4-3-2-1</span>
-              <button type="button" onClick={this.hideInfoInput}>
-                <img className="match-team__check" src={check} alt="validar información" />
+              <button className="match-team-button" type="button" onClick={this.hideInfoInput}>
+                <img className="match-team-button__check" src={check} alt="validar información" />
               </button>
             </span>)}
             <span className="match-name">

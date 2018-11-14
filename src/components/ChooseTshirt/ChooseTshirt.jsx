@@ -7,16 +7,15 @@ import arrowRight from '../../images/arrow-right.png';
 import './ChooseTshirt.scss';
 
 class ChooseTshirt extends Component {
-    // TO DO: change the name "shirtArray" for an specific thing
     state = {
-      shirtArray: 0,
+      shirtPosition: 0,
     }
 
     defaultListShirt = () => {
-      const { shirtArray } = this.state;
+      const { shirtPosition } = this.state;
       const { handlerChangeColorShirt } = this.props;
 
-      return colors[shirtArray].map(
+      return colors[shirtPosition].map(
         color => (
           <Shirt
             fill={color}
@@ -27,28 +26,28 @@ class ChooseTshirt extends Component {
       );
     };
 
-    moveRightshirtArrayColors = () => {
-      const { shirtArray } = this.state;
-      if (shirtArray === colors.length - 1) {
+    moveRightShirtPositionColors = () => {
+      const { shirtPosition } = this.state;
+      if (shirtPosition === colors.length - 1) {
         this.setState({
-          shirtArray: 0,
+          shirtPosition: 0,
         });
       } else {
         this.setState({
-          shirtArray: shirtArray + 1,
+          shirtPosition: shirtPosition + 1,
         });
       }
     };
 
-    moveLeftshirtArrayColors = () => {
-      const { shirtArray } = this.state;
-      if (shirtArray === 0) {
+    moveLeftShirtPositionColors = () => {
+      const { shirtPosition } = this.state;
+      if (shirtPosition === 0) {
         this.setState({
-          shirtArray: colors.length - 1,
+          shirtPosition: colors.length - 1,
         });
       } else {
         this.setState({
-          shirtArray: shirtArray - 1,
+          shirtPosition: shirtPosition - 1,
         });
       }
     };
@@ -56,11 +55,11 @@ class ChooseTshirt extends Component {
     render() {
       return (
         <div className="container">
-          <button type="button" onClick={this.moveLeftshirtArrayColors}>
-            <img className="arrow-left" src={arrowLeft} alt="anteriores camisetas" />
+          <button className="button" type="button" onClick={this.moveLeftShirtPositionColors}>
+            <img className="button__left" src={arrowLeft} alt="anteriores camisetas" />
           </button>
-          <button type="button" onClick={this.moveRightshirtArrayColors}>
-            <img className="arrow-right" src={arrowRight} alt="próximas camisetas" />
+          <button className="button" type="button" onClick={this.moveRightShirtPositionColors}>
+            <img className="button__right" src={arrowRight} alt="próximas camisetas" />
           </button>
           <span className="options">
             {this.defaultListShirt()}

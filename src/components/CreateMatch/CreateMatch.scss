@@ -88,11 +88,6 @@
                 outline: none;
             }
         }
-        &__check{
-            width: 2%;
-            height: 2%;
-            cursor: pointer;
-        }
         &__line {
             padding: 5px;
             text-align: center;
@@ -102,6 +97,18 @@
             background: white;
             font-size: 12px;
             width: 5%;
+        }
+        &-button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            &:focus {
+                outline: none;
+            }
+            &__check {
+                width: 25%;
+                height: 25%;
+            }
         }
     }
     &-configure {
@@ -115,7 +122,6 @@
     }
     &-option {
         width: 90%;
-        padding-left: 3.5%;
         display: flex;
         justify-content: space-between;
         flex-flow: row nowrap;
