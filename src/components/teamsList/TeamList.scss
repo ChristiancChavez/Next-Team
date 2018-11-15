@@ -1,0 +1,38 @@
+.teams {
+    border: 1px solid #D1AC17;
+    border-radius: 6px;
+    position: absolute;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    padding: 1% 0.7%;
+    background: white;
+    right: 33.2%;
+    top: 1%;
+    width: 15%;
+    height: 194px;
+    overflow: scroll;
+    overflow-x: hidden;
+    &-container {
+        height: 200px;
+        &-button {
+            background: transparent;
+            font-family: 'Poppins', sans-serif;
+            border: none;
+            font-size: 1em;
+            cursor: pointer;
+            margin-bottom: 1.5%;
+            width: 100%;
+            &:hover {
+                background: #D1AC17;
+            }
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+}
+
+

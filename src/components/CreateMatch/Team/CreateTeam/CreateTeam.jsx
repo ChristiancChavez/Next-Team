@@ -24,7 +24,6 @@ const CreateTeam = (props) => {
       </span>
       <button type="button" className="save" onClick={handlershowPlayersField}>
         <span className="save__text">Guardar</span>
-        <img className="save__icon" src={check} alt="aprobar este Equipo" />
       </button>
       {editPlayer && (
         <span className="edit">

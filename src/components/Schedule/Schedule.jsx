@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import InputMoment from 'input-moment';
 import {
   Map,
@@ -8,7 +9,8 @@ import {
 } from 'google-maps-react';
 import moment from 'moment';
 import './Schedule.scss';
-import PropTypes from 'prop-types';
+// import { isAbsolute } from 'path';
+
 
 class Schedule extends Component {
   state = {
@@ -73,6 +75,18 @@ class Schedule extends Component {
         <span className="picker__place">
           <input className="input" type="text" value="Brasileirao - Barranquilla, Colombia" readOnly />
         </span>
+        <span className="picker__schedule">
+          <input className="input" type="text" value={m.format('llll')} readOnly />
+          <InputMoment
+            moment={m}
+            onChange={this.handleChange}
+            minStep={5}
+            onSave={this.handleSave}
+            hourStep={1}
+            prevMonthIcon="ion-ios-arrow-left"
+            nextMonthIcon="ion-ios-arrow-right"
+          />
+        </span>
         <Map
           google={google}
           onClick={this.onMapClicked}
@@ -95,18 +109,6 @@ class Schedule extends Component {
             </div>
           </InfoWindow>
         </Map>
-        <span className="picker__schedule">
-          <input className="input" type="text" value={m.format('llll')} readOnly />
-          <InputMoment
-            moment={m}
-            onChange={this.handleChange}
-            minStep={5}
-            onSave={this.handleSave}
-            hourStep={1}
-            prevMonthIcon="ion-ios-arrow-left"
-            nextMonthIcon="ion-ios-arrow-right"
-          />
-        </span>
       </span>
     );
   }

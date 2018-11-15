@@ -6,6 +6,7 @@ import ChooseField from '../ChooseField/ChooseField';
 import CreateTeam from './Team/CreateTeam/CreateTeam';
 import Users from '../../Library/Users';
 import Players from './Players/Players';
+import MatchConfiguration from '../matchConfiguration/MatchConfiguration';
 import create from '../../images/create-icon.png';
 import soccerField from '../../images/soccer-field.jpg';
 import player from '../../images/player.png';
@@ -29,6 +30,7 @@ class CreateMatch extends Component {
       addShirt: false,
       addField: false,
       addSchedule: false,
+      addConfiguration: false,
       createTeam: false,
       name: '',
       nickname: '',
@@ -56,6 +58,7 @@ class CreateMatch extends Component {
         addShirt: false,
         addField: false,
         addSchedule: false,
+        addConfiguration: false,
       });
     };
 
@@ -66,6 +69,7 @@ class CreateMatch extends Component {
         addPlayer: false,
         addField: false,
         addSchedule: false,
+        addConfiguration: false,
       });
     };
 
@@ -76,6 +80,7 @@ class CreateMatch extends Component {
         addPlayer: false,
         addShirt: false,
         addSchedule: false,
+        addConfiguration: false,
       });
     };
 
@@ -87,6 +92,19 @@ class CreateMatch extends Component {
         addPlayer: false,
         addShirt: false,
         addField: false,
+        addConfiguration: false,
+      });
+    };
+
+    toggleConfiguration = () => {
+      const { addConfiguration } = this.state;
+
+      this.setState({
+        addConfiguration: !addConfiguration,
+        addPlayer: false,
+        addShirt: false,
+        addField: false,
+        addSchedule: false,
       });
     };
 
@@ -174,7 +192,8 @@ class CreateMatch extends Component {
         showPlayersField,
         colorSelected,
         fieldToShow,
-        addSchedule
+        addSchedule,
+        addConfiguration,
       } = this.state;
 
       return (
@@ -219,8 +238,8 @@ class CreateMatch extends Component {
                 onChange={this.handleOnChange}
               />
               <span className="match-team__line"> 4-3-2-1</span>
-              <button type="button" onClick={this.hideInfoInput}>
-                <img className="match-team__check" src={check} alt="validar información" />
+              <button className="match-team-button" type="button" onClick={this.hideInfoInput}>
+                <img className="match-team-button__check" src={check} alt="validar información" />
               </button>
             </span>)}
             <span className="match-name">
@@ -241,27 +260,27 @@ class CreateMatch extends Component {
           <section className="match-configure">
             {containerConfigureMatch && (
               <span className="match-option">
-                <button type="button" onClick={this.toggleAddPlayer}>
-                  <img className="match-option__btn" src={player} alt="Lista jugadores" />
+                <button className="match-option__button" type="button" onClick={this.toggleAddPlayer}>
+                  <img className="match-option__image" src={player} alt="Lista jugadores" />
                 </button>
-                <button type="button" onClick={this.toggleChooseShirt}>
-                  <img className="match-option__btn" src={shirts} alt="Uniforme" />
+                <button className="match-option__button" type="button" onClick={this.toggleChooseShirt}>
+                  <img className="match-option__image" src={shirts} alt="Uniforme" />
                 </button>
-                <button type="button" onClick={this.toggleChooseField}>
-                  <img className="match-option__btn" src={fieldOption} alt="campo de juego" />
+                <button className="match-option__button" type="button" onClick={this.toggleChooseField}>
+                  <img className="match-option__image" src={fieldOption} alt="campo de juego" />
                 </button>
-                <button type="button" onClick={this.toggleSchedule}>
-                  <img className="match-option__btn" src={calendar} alt="fecha y lugar" />
+                <button className="match-option__button" type="button" onClick={this.toggleSchedule}>
+                  <img className="match-option__image" src={calendar} alt="fecha y lugar" />
                 </button>
-                <button type="button">
-                  <img className="match-option__btn" src={configure} alt="configuracion" />
+                <button className="match-option__button" type="button" onClick={this.toggleConfiguration}>
+                  <img className="match-option__image" src={configure} alt="configuracion" />
                 </button>
-                <button type="button">
-                  <img className="match-option__btn" src={check} alt="confirmar" />
+                <button className="match-option__button" type="button">
+                  <img className="match-option__image" src={check} alt="confirmar" />
                 </button>
               </span>
             )}
-            <span className="match-close">
+            <span className="match-close" role="button">
               <img className="match-close__btn" src={close} alt="cerrar" />
             </span>
           </section>
@@ -269,6 +288,8 @@ class CreateMatch extends Component {
           {addShirt && <ChooseTshirt handlerChangeColorShirt={this.handlerChangeColorShirt} />}
           {addField && <ChooseField handlerFieldToShow={this.handlerFieldToShow} />}
           {addSchedule && <Schedule />}
+          {addConfiguration && (<MatchConfiguration toggleAddPlayer={this.toggleAddPlayer} />
+          )}
         </div>
       );
     }

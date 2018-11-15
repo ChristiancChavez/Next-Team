@@ -8,7 +8,7 @@
         position: absolute;
         left: 12%;
         top: 33%;
-        display: flex; 
+        display: flex;
         width: 35%;
         justify-content: center;
         flex-flow: row nowrap;
@@ -62,10 +62,22 @@
         align-items: center;
         width: 50%;
         border-right: 1px solid black;
-        &__icon {
-            width: 10%;
-            height: 45%; 
+        &-button {
+            background: transparent;
+            border: none;
             cursor: pointer;
+            padding-left: 0px;
+            padding-top: 6px;
+            width: 15%;
+            &:focus {
+                outline: none;
+            }
+            &__icon {
+                width: 55%;
+            }
+        }
+        &__search {
+            width: 8%;
         }
         &__title {
             font-size: 3em;
@@ -91,22 +103,18 @@
         flex-flow: row nowrap;
         justify-content: space-between;
         border: rgb(197, 156, 22) solid 1px;
-        position: absolute; 
+        position: absolute;
         padding: 10px;
         color: black;
-        background: white; 
+        background: white;
         font-family: 'Poppins', sans-serif;
         border-radius: 6px;
         right: 16%;
         bottom: 78%;
         align-items: center;
-        &__check {
-            width: 10%;
-            height: 59%; 
-            cursor: pointer;
-        }
         &__title {
             font-size: 2.7em;
+            cursor: pointer;
         }
     }
 }

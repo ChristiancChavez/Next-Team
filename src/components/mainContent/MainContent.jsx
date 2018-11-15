@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import * as playersActions from '../../modules/players/actions';
+import { firebase } from '../../config/firebase';
 import logo from '../../images/logo-white.png';
 import blueShirt from '../../images/shirt-blue.png';
 import redShirt from '../../images/shirt-red.png';
 import facebookIcon from '../../images/facebook.png';
 import googleIcon from '../../images/google.png';
 import './MainContent.scss';
-import * as playersActions from '../../modules/players/actions';
-import { firebase } from '../../config/firebase';
+
 
 class MainContent extends Component {
     state = {

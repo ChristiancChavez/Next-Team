@@ -39,7 +39,6 @@
         width: 95%;
         display: inline-block;
         margin-bottom: 4px;
-
         button {
             float: left;
             width: 50%;
@@ -78,14 +77,14 @@
     }
 
     .tabs {
-        margin-bottom: 15px;
+        margin-bottom: 25px;
     }
 
     .btn-save {
         display: block;
         width: 50%;
         background-color: #D1AC17;
-        padding: 12px 0;
+        padding: 4% 0;
         text-align: center;
         color: #ffffff;
         font-size: 1em;
@@ -99,14 +98,15 @@
     align-items: center;
     padding: 2% 0%;
     position: relative;
-    
+
     &__schedule {
         display: flex;
         flex-direction: column;
         align-items: center;
         width: 75%;
         height: 500px;
-
+        z-index: 7;
+        position: relative;
     }
     &__place {
         position: absolute;

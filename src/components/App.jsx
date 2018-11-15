@@ -10,6 +10,7 @@ import SignUpPage from './signUp/SignUp';
 import CreateMatch from './CreateMatch/CreateMatch';
 import * as routes from '../shared/constants/routes';
 import Navigation from './navigation/Navigation';
+import SessionUser from './SessionUser/SessionUser';
 import { firebase } from '../config/firebase';
 
 class App extends Component {
@@ -35,7 +36,6 @@ class App extends Component {
     return (
       <div>
         <Navigation authUser={authUser} />
-
         <main>
           <Route
             exact
@@ -71,6 +71,11 @@ class App extends Component {
             exact
             path={routes.CREATE_MATCH}
             component={CreateMatch}
+          />
+          <Route
+            exact
+            path={routes.SESSION_USER}
+            component={SessionUser}
           />
         </main>
       </div>

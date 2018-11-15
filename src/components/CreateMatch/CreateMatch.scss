@@ -9,7 +9,7 @@
         margin: 0px;
         color: black;
         text-align: center;
-        &__title { 
+        &__title {
             width: 105%;
             font-size: 1.5em;
             font-weight: bold;
@@ -37,7 +37,7 @@
         &__img {
             width: 50%;
             align-self: center;
-        }   
+        }
     }
     &-name {
         position: absolute;
@@ -73,7 +73,7 @@
         font-size: 2em;
         margin-bottom: 10px;
         align-items: center;
-        &__input { 
+        &__input {
             width: 20%;
             padding: 5px;
             text-align: center;
@@ -88,11 +88,6 @@
                 outline: none;
             }
         }
-        &__check{
-            width: 2%;
-            height: 2%;
-            cursor: pointer;
-        }
         &__line {
             padding: 5px;
             text-align: center;
@@ -102,6 +97,18 @@
             background: white;
             font-size: 12px;
             width: 5%;
+        }
+        &-button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            &:focus {
+                outline: none;
+            }
+            &__check {
+                width: 25%;
+                height: 25%;
+            }
         }
     }
     &-configure {
@@ -115,14 +122,19 @@
     }
     &-option {
         width: 90%;
-        padding-left: 3.5%;
         display: flex;
         justify-content: space-between;
         flex-flow: row nowrap;
         align-items: center;
-        &__btn {
-            width: 3%;
-            height: 3%; 
+        &__image {
+            width: 28%;
+            height: 28%;
+            cursor: pointer;
+        }
+        &__button {
+            outline: 0;
+            background: transparent;
+            border: none;
             cursor: pointer;
         }
     }
@@ -134,9 +146,9 @@
         align-items: center;
         &__btn {
             width: 28%;
-            height: 28%; 
+            height: 28%;
             cursor: pointer;
         }
     }
-    
+
 }

@@ -23,7 +23,7 @@
             cursor: pointer;
         }
     }
-    
+
     .edit {
         position: absolute;
         background: gray;
@@ -32,7 +32,7 @@
         padding: 2% 1%;
         top: 30%;
         left: 16%;
-        display: flex; 
+        display: flex;
         width: 67%;
         justify-content: center;
         flex-flow: row nowrap;
@@ -93,7 +93,7 @@
             justify-content: space-between;
             font-family: 'Poppins', sans-serif;
             align-items: center;
-            border-bottom: 1px solid rgb(197, 156, 22); 
+            border-bottom: 1px solid rgb(197, 156, 22);
             &__name {
                 font-size: 1em;
                 width: 80%;
@@ -108,7 +108,7 @@
                 width: 30%;
                 &__icon {
                     width: 20%;
-                    height: 48%; 
+                    height: 48%;
                     cursor: pointer;
                     margin-right: 6%;
                 }
@@ -119,7 +119,7 @@
                 width: 22%;
                 &__option {
                     width: 25%;
-                    height: 75%; 
+                    height: 75%;
                     cursor: pointer;
                     margin-right: 6%;
                 }
@@ -139,9 +139,5 @@
         justify-content: space-between;
         align-items: center;
         cursor: pointer;
-        &__icon {
-            width: 20%;
-            height: 20%;
-        }
     }
 }
