@@ -7,33 +7,51 @@ import payTeam from '../../../images/pay-team.png';
 import pay from '../../../images/pay.png';
 import challenger from '../../../images/challenger.png';
 import playerBlack from '../../../images/player-black.png';
-import teamsList from '../../../images/list-team.png';
+import teamsListIcon from '../../../images/list-team.png';
 import './PpalConfiguration.scss';
 
 class PpalConfiguration extends Component {
   state = {
-    teamName: 'Equipo Rival',
-    showTeamList: false,
+    // teamName: 'Equipo Rival',
+    // showTeamList: false,
+    totalPrice: '',
+    individualPrice: ''
   }
 
-  selectTeam = (team) => {
-    const { showTeamList } = this.state;
-    this.setState({
-      teamName: team,
-      showTeamList: !showTeamList,
-    });
-  }
+  // selectTeam = (team) => {
+  //   const { showTeamList } = this.state;
+  //   this.setState({
+  //     teamName: team,
+  //     showTeamList: !showTeamList,
+  //   });
+  // }
 
-  handlerShowTeamList = () => {
-    const { showTeamList } = this.state;
+  // handlerShowTeamList = () => {
+  //   const { showTeamList } = this.state;
+  //   this.setState({
+  //     showTeamList: !showTeamList,
+  //   });
+  // }
+
+  showIndividualPrice = (props, e) => {
+    const { numberPlayers } = this.props;
+    const { totalPrice } = this.state;
+    const { target: { value } } = e;
+    const playerprice = `${totalPrice / numberPlayers}`;
     this.setState({
-      showTeamList: !showTeamList,
+      totalPrice: value,
+      individualPrice: playerprice,
     });
   }
 
   render() {
-    const { toggleAddPlayer } = this.props;
-    const { teamName, showTeamList } = this.state;
+    const {
+      toggleAddPlayer, handleOnChange, handlerShowTeamList, showTeamList, teamName, selectTeam
+    } = this.props;
+    const {
+      totalPrice,
+      individualPrice
+    } = this.state;
 
     return (
       <section className="ppalconfiguration">
@@ -43,11 +61,17 @@ class PpalConfiguration extends Component {
             <span className="tooltip__text">Partido con Pago</span>
           </span>
           <span className="pay-container">
-            <input className="pay-container__price" type="number" placeholder="Precio x Equipo" />
+            <input
+              className="pay-container__price"
+              type="number"
+              placeholder="Precio x Equipo"
+              value={totalPrice}
+              onChange={handleOnChange}
+            />
             <img className="pay-container__image" src={payTeam} alt="Equipo" />
           </span>
           <span className="pay-container">
-            <input className="pay-container__price" type="number" placeholder="Precio x Jugador" />
+            <span className="pay-container__price" type="number" placeholder="Precio x Jugador">{individualPrice}</span>
             <img className="pay-container__image" src={payPlayer} alt="Jugador" />
           </span>
         </span>
@@ -63,9 +87,9 @@ class PpalConfiguration extends Component {
           </span>
           <span className="challenger-search">
             <span className="challenger-search__team" readOnly>{teamName}</span>
-            {showTeamList && <TeamsList selectTeam={this.selectTeam} list={teams} />}
-            <button type="button" className="challenger-search__button" onClick={this.handlerShowTeamList}>
-              <img className="challenger-search__icon" src={teamsList} alt="Buscar Equipo rival" />
+            {showTeamList && <TeamsList selectTeam={selectTeam} list={teams} />}
+            <button type="button" className="challenger-search__button" onClick={handlerShowTeamList}>
+              <img className="challenger-search__icon" src={teamsListIcon} alt="Buscar Equipo rival" />
             </button>
           </span>
         </span>
@@ -77,4 +101,10 @@ export default PpalConfiguration;
 
 PpalConfiguration.propTypes = {
   toggleAddPlayer: PropTypes.func.isRequired,
+  handleOnChange: PropTypes.func.isRequired,
+  handlerShowTeamList: PropTypes.func.isRequired,
+  selectTeam: PropTypes.func.isRequired,
+  showTeamList: PropTypes.bool.isRequired,
+  numberPlayers: PropTypes.symbol.isRequired,
+  teamName: PropTypes.symbol.isRequired,
 };

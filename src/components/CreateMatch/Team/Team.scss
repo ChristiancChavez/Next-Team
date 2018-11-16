@@ -6,13 +6,15 @@
     position: relative;
     .info {
         position: absolute;
-        left: 12%;
-        top: 33%;
+        left: 8%;
+        top: 39%;
         display: flex;
         width: 35%;
         justify-content: center;
         flex-flow: row nowrap;
         &__input {
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
             width: 200%;
             height: 30px;
             font-size: 100%;
@@ -20,7 +22,7 @@
             border-top-left-radius: 6px;
             border-bottom-left-radius: 6px;
             border: rgb(197, 156, 22) solid 1px;
-            background: white;
+            background: lightgray;
             border-right: 0px;
             color: black;
             &:focus {
@@ -52,15 +54,15 @@
             }
         }
     }
-    &-option {
+    .option {
         display: flex;
         flex-flow: row nowrap;
         justify-content: center;
-        font-size: 50%;
-        background: lightgray;
-        padding: 1% 10%;
+        background: white;
+        padding: 1% 9%;
         align-items: center;
         width: 50%;
+        height: 200px;
         border-right: 1px solid black;
         &-button {
             background: transparent;
@@ -74,47 +76,31 @@
             }
             &__icon {
                 width: 55%;
+                &--big {
+                    width: 80%;
+                }
             }
         }
         &__search {
             width: 8%;
         }
         &__title {
-            font-size: 3em;
-            margin-right: 5%;
-        }
-        &__input {
-            padding: 5px;
-            text-align: center;
-            color: black;
-            border-radius: 6px;
-            border: rgb(197, 156, 22) solid 1px;
-            background: white;
-            margin-right: 5%;
-            font-size: 3em;
-            &:focus {
-                outline: none;
+            font-size: 1.5em;
+            &--big {
+                width: 62%;
             }
         }
-    }
-    &-filter {
-        width: 283px;
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: space-between;
-        border: rgb(197, 156, 22) solid 1px;
-        position: absolute;
-        padding: 10px;
-        color: black;
-        background: white;
-        font-family: 'Poppins', sans-serif;
-        border-radius: 6px;
-        right: 16%;
-        bottom: 78%;
-        align-items: center;
-        &__title {
-            font-size: 2.7em;
-            cursor: pointer;
+        &__team {
+            border-radius: 6px;
+            border: 1px solid #D1AC17;
+            background: lightgray;
+            padding: 1.5% 1%;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1em;
+            font-weight: bold;
+            color: gray;
+            width: 220px;
         }
     }
 }
