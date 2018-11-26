@@ -7,11 +7,14 @@ import Account from './account/Account';
 import PasswordForgetPage from './passwordForget/PasswordForget';
 import SingInPage from './signIn/SignIn';
 import SignUpPage from './signUp/SignUp';
-import CreateMatch from './CreateMatch/CreateMatch';
-import * as routes from '../shared/constants/routes';
+import CreateMatch from './CreateMatch';
+import {
+  HOME, ABOUT_US, ACCOUNT, PASSWORD_FORGET, SIGN_IN, SIGN_UP, CREATE_MATCH, SESSION_USER
+} from '../shared/constants/routes';
 import Navigation from './navigation/Navigation';
 import SessionUser from './SessionUser/SessionUser';
 import { firebase } from '../config/firebase';
+// import ballplay from '../images/arrow-right.png';
 
 class App extends Component {
   constructor(props) {
@@ -33,6 +36,7 @@ class App extends Component {
 
   render() {
     const { authUser } = this.state;
+
     return (
       <div>
         <Navigation authUser={authUser} />
@@ -40,41 +44,41 @@ class App extends Component {
           <Route
             exact
             component={MainContent}
-            path={routes.HOME}
+            path={HOME}
           />
           <Route
             exact
-            path={routes.ABOUT_US}
+            path={ABOUT_US}
             component={AboutUs}
           />
           <Route
             exact
-            path={routes.ACCOUNT}
+            path={ACCOUNT}
             component={Account}
           />
           <Route
             exact
-            path={routes.PASSWORD_FORGET}
+            path={PASSWORD_FORGET}
             component={PasswordForgetPage}
           />
           <Route
             exact
-            path={routes.SIGN_IN}
+            path={SIGN_IN}
             component={SingInPage}
           />
           <Route
             exact
-            path={routes.SIGN_UP}
+            path={SIGN_UP}
             component={SignUpPage}
           />
           <Route
             exact
-            path={routes.CREATE_MATCH}
+            path={CREATE_MATCH}
             component={CreateMatch}
           />
           <Route
             exact
-            path={routes.SESSION_USER}
+            path={SESSION_USER}
             component={SessionUser}
           />
         </main>

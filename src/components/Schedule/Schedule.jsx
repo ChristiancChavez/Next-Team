@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import InputMoment from 'input-moment';
-import {
-  Map,
-  Marker,
-  GoogleApiWrapper,
-  InfoWindow
-} from 'google-maps-react';
+// import {
+//   Map,
+//   Marker,
+//   GoogleApiWrapper,
+//   InfoWindow
+// } from 'google-maps-react';
 import moment from 'moment';
+import MapContainer from './map/maps';
 import './Schedule.scss';
 // import { isAbsolute } from 'path';
 
@@ -15,9 +16,9 @@ import './Schedule.scss';
 class Schedule extends Component {
   state = {
     m: moment(),
-    showingInfoWindow: false,
-    activeMarker: {},
-    selectedPlace: {},
+    // showingInfoWindow: false,
+    // activeMarker: {},
+    // selectedPlace: {},
   };
 
   handleChange = m => {
@@ -29,46 +30,46 @@ class Schedule extends Component {
     console.log('saved', m.format('llll'));
   };
 
-  onMarkerClick = (props, marker) => {
-    this.setState({
-      selectedPlace: props,
-      activeMarker: marker,
-      showingInfoWindow: true
-    });
-  }
+  // onMarkerClick = (props, marker) => {
+  //   this.setState({
+  //     selectedPlace: props,
+  //     activeMarker: marker,
+  //     showingInfoWindow: true
+  //   });
+  // }
 
-  onMapClicked = () => {
-    const { showingInfoWindow } = this.state;
+  // onMapClicked = () => {
+  //   const { showingInfoWindow } = this.state;
 
-    if (showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null
-      });
-    }
-  };
+  //   if (showingInfoWindow) {
+  //     this.setState({
+  //       showingInfoWindow: false,
+  //       activeMarker: null
+  //     });
+  //   }
+  // };
 
   render() {
-    const style = {
-      width: '55%',
-      height: '60%',
-      left: '24%',
-      top: '110%',
-      marginBottom: '5%',
-      borderRadius: '6px',
-      border: 'solid 1px #D1AC17',
-    };
+    // const style = {
+    //   width: '55%',
+    //   height: '60%',
+    //   left: '24%',
+    //   top: '110%',
+    //   marginBottom: '5%',
+    //   borderRadius: '6px',
+    //   border: 'solid 1px #D1AC17',
+    // };
 
-    const { google } = this.props;
+    // const { google } = this.props;
 
     const {
-      activeMarker,
-      showingInfoWindow,
-      selectedPlace,
+      // activeMarker,
+      // showingInfoWindow,
+      // selectedPlace,
       m
     } = this.state;
 
-    const { name } = selectedPlace;
+    // const { name } = selectedPlace;
 
     return (
       <span className="picker">
@@ -87,7 +88,7 @@ class Schedule extends Component {
             nextMonthIcon="ion-ios-arrow-right"
           />
         </span>
-        <Map
+        {/* <Map
           google={google}
           onClick={this.onMapClicked}
           style={style}
@@ -108,16 +109,25 @@ class Schedule extends Component {
               </h1>
             </div>
           </InfoWindow>
-        </Map>
+        </Map> */}
+        <MapContainer />
       </span>
     );
   }
 }
 
-Schedule.propTypes = {
-  google: PropTypes.shape().isRequired
-};
+// Schedule.propTypes = {
+//   google: PropTypes.shape().isRequired,
+// };
+// Map.defaultProps = {
+//   zoom: 14,
+//   initialCenter: {
+//     lat: 37.774929,
+//     lng: -122.419416
+//   }
+// };
 
-export default GoogleApiWrapper({
-  apiKey: ('AIzaSyD25bf9Rz-jJCV5cQm1-6wvywU1Q4eNt3Y')
-})(Schedule);
+// export default GoogleApiWrapper({
+//   apiKey: ('AIzaSyD25bf9Rz-jJCV5cQm1-6wvywU1Q4eNt3Y')
+// })(Schedule);
+export default Schedule;
