@@ -36,11 +36,21 @@
         width: 25%;
         height: 160px;
         margin-bottom: 15px;
-        cursor: pointer;
-        &__img {
-            align-self: center;
-            width: 60%;
-            height: 55%;
+
+        &-button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding-left: 0px;
+            padding-top: 6px;
+            &:focus {
+                outline: none;
+            }
+            &__img {
+                align-self: center;
+                width: 70%;
+                cursor:pointer;
+            }
         }
         &__title {
             font-size: 80%;

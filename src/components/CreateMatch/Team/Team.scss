@@ -6,10 +6,10 @@
     position: relative;
     .info {
         position: absolute;
-        left: 8%;
+        left: 5%;
         top: 39%;
         display: flex;
-        width: 35%;
+        width: 40%;
         justify-content: center;
         flex-flow: row nowrap;
         &__input {
@@ -39,18 +39,27 @@
                 border-right: rgb(197, 156, 22) solid 1px;
             }
         }
-        &-add {
+        .add {
             display: flex;
-            margin-left: 5%;
-            &__icon {
-                width: 24%;
-                padding: 4%;
-                align-self: center;
-                border-radius: 50px;
+            margin-left: 1%;
+            justify-content: space-between;
+            width: 100%;
+            &-button {
+                border-radius: 8px;
                 background: gray;
                 border: rgb(197, 156, 22) solid 1px;
-                cursor: pointer;
-                margin-right: 5px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 2px;
+                margin-left: 2%;
+                &:focus {
+                    outline: none;
+                }
+                &__icon {
+                    width: 60%;
+                    cursor: pointer;
+                }
             }
         }
     }

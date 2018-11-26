@@ -12,26 +12,9 @@ import './PpalConfiguration.scss';
 
 class PpalConfiguration extends Component {
   state = {
-    // teamName: 'Equipo Rival',
-    // showTeamList: false,
     totalPrice: '',
     individualPrice: ''
   }
-
-  // selectTeam = (team) => {
-  //   const { showTeamList } = this.state;
-  //   this.setState({
-  //     teamName: team,
-  //     showTeamList: !showTeamList,
-  //   });
-  // }
-
-  // handlerShowTeamList = () => {
-  //   const { showTeamList } = this.state;
-  //   this.setState({
-  //     showTeamList: !showTeamList,
-  //   });
-  // }
 
   showIndividualPrice = (props, e) => {
     const { numberPlayers } = this.props;

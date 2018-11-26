@@ -12,19 +12,52 @@ import './Team.scss';
 
 const Team = (props) => {
   const {
-    createTeam, showCreateTeam, teamName, showTeamList, selectTeam, handlerShowTeamList
+    createTeam,
+    showCreateTeam,
+    teamName,
+    showTeamList,
+    selectTeam,
+    handlerShowTeamList,
+    handleOnChange,
+    namePlayerInput,
+    numberPlayerInput,
+    createPlayerItem,
+    addingBall
   } = props;
-
   return (
     <div className="team">
       {createTeam && (
         <span className="info">
-          <input className="info__input" type="text" placeholder="Nuevo Jugador" name="player" />
-          <input className="info__input info__input--number" type="text" placeholder="#" name="number" />
-          <span className="info-add">
-            <img className="info-add__icon" src={newPlayer} alt="adicionar jugador" />
-            <img className="info-add__icon " src={captain} alt="adicionar capitán" />
-            <img className="info-add__icon" src={ballPlay} alt="adicionar balón" />
+          <input
+            className="info__input"
+            type="text"
+            placeholder="Nuevo Jugador"
+            name="namePlayerInput"
+            value={namePlayerInput}
+            onChange={handleOnChange}
+          />
+          <input
+            className="info__input info__input--number"
+            type="text"
+            placeholder="#"
+            name="numberPlayerInput"
+            value={numberPlayerInput}
+            onChange={handleOnChange}
+          />
+          <span className="add">
+            <button
+              className="add-button"
+              type="button"
+              onClick={() => createPlayerItem({ namePlayerInput, numberPlayerInput })}
+            >
+              <img className="add-button__icon" src={newPlayer} alt="adicionar jugador" />
+            </button>
+            <button className="add-button" type="button">
+              <img className="add-button__icon" src={captain} alt="adicionar capitán" />
+            </button>
+            <button className="add-button" type="button" onClick={addingBall}>
+              <img className="add-button__icon" src={ballPlay} alt="adicionar balón" />
+            </button>
           </span>
         </span>
       )
@@ -43,13 +76,6 @@ const Team = (props) => {
         <span className="option__team" readOnly>{teamName}</span>
         {showTeamList && <TeamsList selectTeam={selectTeam} list={teams} />}
       </span>
-      {/* <span className="team-option">
-        <input className="team-option__input" placeholder="Mi Equipo" />
-        <img className="team-option__search" src={search} alt="buscar Mi Equipo" />
-        <span className="team-filter">
-          <span className="team-filter__title">Nacional</span>
-        </span>
-      </span> */}
     </div>
   );
 };
@@ -57,10 +83,15 @@ const Team = (props) => {
 export default Team;
 
 Team.propTypes = {
+  addingBall: PropTypes.func.isRequired,
+  createPlayerItem: PropTypes.func.isRequired,
+  handleOnChange: PropTypes.func.isRequired,
   selectTeam: PropTypes.func.isRequired,
   handlerShowTeamList: PropTypes.func.isRequired,
   showCreateTeam: PropTypes.func.isRequired,
   showTeamList: PropTypes.bool.isRequired,
   createTeam: PropTypes.bool.isRequired,
   teamName: PropTypes.symbol.isRequired,
+  numberPlayerInput: PropTypes.symbol.isRequired,
+  namePlayerInput: PropTypes.string.isRequired,
 };

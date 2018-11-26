@@ -20,161 +20,9 @@ import './CreateMatch.scss';
 
 
 const CreateMatch = (props) => {
-  // state = {
-  //   addPlayer: false,
-  //   addShirt: false,
-  //   addField: false,
-  //   addSchedule: false,
-  //   addConfiguration: false,
-  //   createTeam: false,
-  //   name: '',
-  //   nickname: '',
-  //   players: '',
-  //   containerInput: true,
-  //   editPlayer: false,
-  //   containerConfigureMatch: false,
-  //   showPlayersField: false,
-  //   colorSelected: '',
-  //   fieldToShow: soccerField,
-  //   numberPlayers: '',
-  // }
-
-  // handleOnChange = e => {
-  //   const { target: { value, name } } = e;
-  //   this.setState({
-  //     [name]: value,
-  //     numberPlayers: value
-  //   });
-  // }
-
-  // toggleAddPlayer = () => {
-  //   const { addPlayer } = this.state;
-  //   this.setState({
-  //     addPlayer: !addPlayer,
-  //     addShirt: false,
-  //     addField: false,
-  //     addSchedule: false,
-  //     addConfiguration: false,
-  //   });
-  // };
-
-  // toggleChooseShirt = () => {
-  //   const { addShirt } = this.state;
-  //   this.setState({
-  //     addShirt: !addShirt,
-  //     addPlayer: false,
-  //     addField: false,
-  //     addSchedule: false,
-  //     addConfiguration: false,
-  //   });
-  // };
-
-  // toggleChooseField = () => {
-  //   const { addField } = this.state;
-  //   this.setState({
-  //     addField: !addField,
-  //     addPlayer: false,
-  //     addShirt: false,
-  //     addSchedule: false,
-  //     addConfiguration: false,
-  //   });
-  // };
-
-  // toggleSchedule = () => {
-  //   const { addSchedule } = this.state;
-
-  //   this.setState({
-  //     addSchedule: !addSchedule,
-  //     addPlayer: false,
-  //     addShirt: false,
-  //     addField: false,
-  //     addConfiguration: false,
-  //   });
-  // };
-
-  // toggleConfiguration = () => {
-  //   const { addConfiguration } = this.state;
-
-  //   this.setState({
-  //     addConfiguration: !addConfiguration,
-  //     addPlayer: false,
-  //     addShirt: false,
-  //     addField: false,
-  //     addSchedule: false,
-  //   });
-  // };
-
-  // showCreateTeam = () => {
-  //   const { createTeam } = this.state;
-  //   this.setState({
-  //     createTeam: !createTeam,
-  //   });
-  // };
-
-  // hideInfoInput = () => {
-  //   const {
-  //     name,
-  //     nickname,
-  //     players,
-  //     containerInput,
-  //     containerConfigureMatch
-  //   } = this.state;
-
-  //   if (name && nickname && players) {
-  //     this.setState({
-  //       containerInput: !containerInput,
-  //       containerConfigureMatch: !containerConfigureMatch,
-  //     });
-  //   }
-  // };
-
-  // showPlayersList = () => (
-  //   Users.map((singlePLayer) => (
-  //     <span className="list-player" key={singlePLayer.name}>
-  //       <span className="list-player-options">
-  //         <img className="list-player-options__option" src={captain} alt="capitan" />
-  //         <img className="list-player-options__option" src={ballPlay} alt="capitan" />
-  //       </span>
-  //       <span className="list-player__name">{singlePLayer.name}</span>
-  //       <span className="list-player__number">{singlePLayer.number}</span>
-  //       <span className="list-player-icons">
-  //         <button type="button" onClick={this.showEditPlayer}>
-  //           <img className="list-player-icons__icon" src={editIcon} alt="editar jugador" />
-  //         </button>
-  //         <img className="list-player-icons__icon" src={deleteIcon} alt="eliminar jugador" />
-  //       </span>
-  //     </span>)
-  //   ));
-
-  // showEditPlayer = () => {
-  //   const { editPlayer } = this.state;
-  //   this.setState({
-  //     editPlayer: !editPlayer,
-  //   });
-  // };
-
-  // handlershowPlayersField = () => {
-  //   const { showPlayersField, createTeam } = this.state;
-  //   this.setState({
-  //     showPlayersField: !showPlayersField,
-  //     createTeam: !createTeam,
-  //   });
-  // }
-
-  // handlerChangeColorShirt = (color) => {
-  //   this.setState({
-  //     colorSelected: color,
-  //   });
-  // }
-
-  // handlerFieldToShow = (field) => {
-  //   this.setState({
-  //     fieldToShow: field,
-  //   });
-  // }
-
   const {
     name,
+    addingBall,
     containerInput,
     createTeam,
     addPlayer,
@@ -207,6 +55,12 @@ const CreateMatch = (props) => {
     handlerFieldToShow,
     selectTeam,
     handlerShowTeamList,
+    namePlayerInput,
+    numberPlayerInput,
+    createPlayerItem,
+    playerList,
+    ball,
+    // showBall
   } = props;
 
   return (
@@ -265,9 +119,13 @@ const CreateMatch = (props) => {
           handlershowPlayersField={handlershowPlayersField}
           showCreateTeam={showCreateTeam}
           hidecreateTeam={createTeam}
-          playerList={showPlayersList}
+          showPlayersList={showPlayersList}
           editPlayer={editPlayer}
           showEditPlayer={showEditPlayer}
+          namePlayerInput={namePlayerInput}
+          numberPlayerInput={numberPlayerInput}
+          playerList={playerList}
+          ball={ball}
         />
         )}
       </section>
@@ -306,6 +164,11 @@ const CreateMatch = (props) => {
           teamName={teamName}
           showCreateTeam={showCreateTeam}
           createTeam={createTeam}
+          handleOnChange={handleOnChange}
+          createPlayerItem={createPlayerItem}
+          namePlayerInput={namePlayerInput}
+          numberPlayerInput={numberPlayerInput}
+          addingBall={addingBall}
         />
       )}
       {addShirt && <ChooseTshirt handlerChangeColorShirt={handlerChangeColorShirt} />}
@@ -328,6 +191,8 @@ const CreateMatch = (props) => {
 
 CreateMatch.propTypes = {
   toggleAddPlayer: PropTypes.func.isRequired,
+  addingBall: PropTypes.func.isRequired,
+  createPlayerItem: PropTypes.func.isRequired,
   handleOnChange: PropTypes.func.isRequired,
   toggleChooseShirt: PropTypes.func.isRequired,
   toggleChooseField: PropTypes.func.isRequired,
@@ -355,10 +220,14 @@ CreateMatch.propTypes = {
   addConfiguration: PropTypes.bool.isRequired,
   numberPlayers: PropTypes.bool.isRequired,
   showTeamList: PropTypes.bool.isRequired,
+  ball: PropTypes.bool.isRequired,
   name: PropTypes.symbol.isRequired,
+  playerList: PropTypes.arrayOf.isRequired,
   nickname: PropTypes.symbol.isRequired,
   players: PropTypes.symbol.isRequired,
   colorSelected: PropTypes.symbol.isRequired,
   teamName: PropTypes.symbol.isRequired,
+  namePlayerInput: PropTypes.string.isRequired,
+  numberPlayerInput: PropTypes.symbol.isRequired,
 };
 export default CreateMatch;

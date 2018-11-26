@@ -14,12 +14,8 @@ import {
 import Navigation from './navigation/Navigation';
 import SessionUser from './SessionUser/SessionUser';
 import { firebase } from '../config/firebase';
-import deleteIcon from '../images/delete-icon.png';
-import editIcon from '../images/edit-icon.png';
-import ballPlay from '../images/ball-play.png';
-import captain from '../images/captain.png';
-import Users from '../Library/Users';
 import soccerField from '../images/soccer-field.jpg';
+// import ballplay from '../images/arrow-right.png';
 
 class App extends Component {
   constructor(props) {
@@ -32,19 +28,23 @@ class App extends Component {
       addSchedule: false,
       addConfiguration: false,
       createTeam: false,
-      name: '',
-      nickname: '',
-      players: '',
       containerInput: true,
       editPlayer: false,
       containerConfigureMatch: false,
       showPlayersField: false,
+      showTeamList: false,
+      ball: false,
+      authUser: null,
+      name: '',
+      nickname: '',
+      players: '',
+      namePlayerInput: '',
+      numberPlayerInput: '',
       colorSelected: '',
       fieldToShow: soccerField,
       // numberPlayers: '',
       teamName: 'Equipo Rival',
-      showTeamList: false,
-      authUser: null,
+      playerList: [],
     };
   }
 
@@ -61,9 +61,26 @@ class App extends Component {
     const { target: { value, name } } = e;
     this.setState({
       [name]: value,
-      // numberPlayers: value
     });
   }
+
+  createPlayerItem = (player) => {
+    const { playerList } = this.state;
+    this.setState({
+      playerList: [...playerList, player],
+      namePlayerInput: '',
+      numberPlayerInput: '',
+    });
+  };
+
+  addingBall = () => {
+    const { ball } = this.state;
+    this.setState({
+      ball: !ball,
+    });
+  };
+
+  // showBall = () => React.createElement('span', null, React.createElement('img', { className: 'options__option', src: ballplay }));
 
   toggleAddPlayer = () => {
     const { addPlayer } = this.state;
@@ -146,26 +163,6 @@ class App extends Component {
     }
   };
 
-  showPlayersList = () => (
-    Users.map((singlePLayer) => (
-      <span className="list-player" key={singlePLayer.name}>
-        <span className="options">
-          <img className="options__option" src={captain} alt="capitan" />
-          <img className="options__option" src={ballPlay} alt="capitan" />
-        </span>
-        <span className="list-player__name">{singlePLayer.name}</span>
-        <span className="list-player__number">{singlePLayer.number}</span>
-        <span className="icons">
-          <button className="icons-button icons-button--end" type="button" onClick={this.showEditPlayer}>
-            <img className="icons-button__icon" src={editIcon} alt="editar jugador" />
-          </button>
-          <button className="icons-button" type="button" onClick={this.showEditPlayer}>
-            <img className="icons-button__icon" src={deleteIcon} alt="eliminar jugador" />
-          </button>
-        </span>
-      </span>)
-    ));
-
   showEditPlayer = () => {
     const { editPlayer } = this.state;
     this.setState({
@@ -228,7 +225,12 @@ class App extends Component {
       showPlayersField,
       teamName,
       showTeamList,
+      namePlayerInput,
+      numberPlayerInput,
+      playerList,
+      ball,
     } = this.state;
+
     return (
       <div>
         <Navigation authUser={authUser} />
@@ -268,6 +270,8 @@ class App extends Component {
             path={CREATE_MATCH}
             render={() => (
               <CreateMatch
+                playerList={playerList}
+                ball={ball}
                 addPlayer={addPlayer}
                 addShirt={addShirt}
                 addField={addField}
@@ -285,6 +289,9 @@ class App extends Component {
                 containerInput={containerInput}
                 teamName={teamName}
                 showTeamList={showTeamList}
+                namePlayerInput={namePlayerInput}
+                numberPlayerInput={numberPlayerInput}
+                addingBall={this.addingBall}
                 handleOnChange={this.handleOnChange}
                 toggleAddPlayer={this.toggleAddPlayer}
                 toggleChooseShirt={this.toggleChooseShirt}
@@ -300,6 +307,8 @@ class App extends Component {
                 handlerFieldToShow={this.handlerFieldToShow}
                 selectTeam={this.selectTeam}
                 handlerShowTeamList={this.handlerShowTeamList}
+                createPlayerItem={this.createPlayerItem}
+                // showBall={this.showBall}
               />
             )}
 
