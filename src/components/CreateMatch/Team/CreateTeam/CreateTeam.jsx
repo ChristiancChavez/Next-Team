@@ -4,23 +4,45 @@ import close from '../../../../images/delete-team.png';
 import ballPlay from '../../../../images/ball-play.png';
 import captain from '../../../../images/captain.png';
 import check from '../../../../images/check-icon.png';
+import deleteIcon from '../../../../images/delete-icon.png';
+import editIcon from '../../../../images/edit-icon.png';
 import './CreateTeam.scss';
 
 const CreateTeam = (props) => {
   const {
     showCreateTeam,
-    playerList,
     editPlayer,
     handlershowPlayersField,
+    playerList,
+    ball
   } = props;
-
   return (
     <div className="popup">
       <button type="button" className="close" onClick={showCreateTeam}>
         <img className="close__btn" src={close} alt="cerrar popup" />
       </button>
       <span className="list">
-        {playerList()}
+        { playerList.length !== 0
+          ? playerList.map((singlePlayer) => (
+            <span className="list-player" key={singlePlayer.name}>
+              <span className="options">
+                <img className="options__option" src={captain} alt="capitan" />
+                {ball && <img className="options__option" src={ballPlay} alt="balón de fútbol" />}
+              </span>
+              <span className="list-player__name">{singlePlayer.namePlayerInput}</span>
+              <span className="list-player__number">{singlePlayer.numberPlayerInput}</span>
+              <span className="icons">
+                <button className="icons-button icons-button--end" type="button">
+                  <img className="icons-button__icon" src={editIcon} alt="editar jugador" />
+                </button>
+                <button className="icons-button" type="button">
+                  <img className="icons-button__icon" src={deleteIcon} alt="eliminar jugador" />
+                </button>
+              </span>
+            </span>
+          ))
+          : null
+        }
       </span>
       <button type="button" className="save" onClick={handlershowPlayersField}>
         <span className="save__text">Guardar</span>
@@ -44,8 +66,9 @@ const CreateTeam = (props) => {
 export default CreateTeam;
 
 CreateTeam.propTypes = {
-  showCreateTeam: PropTypes.func.isRequired,
-  playerList: PropTypes.func.isRequired,
-  editPlayer: PropTypes.bool.isRequired,
   handlershowPlayersField: PropTypes.func.isRequired,
+  showCreateTeam: PropTypes.func.isRequired,
+  editPlayer: PropTypes.bool.isRequired,
+  ball: PropTypes.bool.isRequired,
+  playerList: PropTypes.arrayOf.isRequired,
 };

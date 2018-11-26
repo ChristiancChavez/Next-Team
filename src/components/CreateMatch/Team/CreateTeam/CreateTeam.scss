@@ -17,9 +17,12 @@
         position: absolute;
         right: 1%;
         top: 1%;
+        background: transparent;
+        border: none;
+        display: flex;
+        justify-content: flex-end;
         &__btn {
-            width: 22px;
-            height: 22px;
+            width: 20%;
             cursor: pointer;
         }
     }
@@ -102,18 +105,33 @@
                 font-size: 1em;
                 width: 10%;
             }
-            &-icons {
+            .icons {
                 display: flex;
                 justify-content: flex-end;
                 width: 30%;
-                &__icon {
-                    width: 20%;
-                    height: 48%;
-                    cursor: pointer;
-                    margin-right: 6%;
+                &-button {
+                    background: transparent;
+                    border: none;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 0%;
+                    &--end {
+                        justify-content: flex-end;
+                    }
+                    &:focus {
+                        outline: none;
+                    }
+                    &__icon {
+                        width: 35%;
+                        height: 60%;
+                        cursor: pointer;
+                        margin-right: 6%;
+
+                    }
                 }
             }
-            &-options {
+            .options {
                 display: flex;
                 justify-content: space-around;
                 width: 22%;

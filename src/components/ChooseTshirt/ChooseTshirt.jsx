@@ -54,16 +54,16 @@ class ChooseTshirt extends Component {
 
     render() {
       return (
-        <div className="container">
+        <div className="chooseContainer">
           <button className="button" type="button" onClick={this.moveLeftShirtPositionColors}>
-            <img className="button__left" src={arrowLeft} alt="anteriores camisetas" />
-          </button>
-          <button className="button" type="button" onClick={this.moveRightShirtPositionColors}>
-            <img className="button__right" src={arrowRight} alt="próximas camisetas" />
+            <img className="button__arrow" src={arrowLeft} alt="anteriores camisetas" />
           </button>
           <span className="options">
             {this.defaultListShirt()}
           </span>
+          <button className="button" type="button" onClick={this.moveRightShirtPositionColors}>
+            <img className="button__arrow" src={arrowRight} alt="próximas camisetas" />
+          </button>
         </div>
       );
     }

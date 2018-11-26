@@ -1,4 +1,7 @@
 import React from 'react';
+import { Link, Route } from 'react-router-dom';
+import { CREATE_MATCH } from '../../shared/constants/routes';
+import CreateMatch from '../CreateMatch/CreateMatch';
 import create from '../../images/create-icon.png';
 import team from '../../images/team-icon.png';
 import search from '../../images/search-icon.png';
@@ -17,27 +20,42 @@ const Session = () => (
       <section className="options">
         <span className="option">
           <span className="option__title">Crear Partido</span>
-          <img className="option__img" src={create} alt="crea partido" />
+          <button className="option-button" type="button">
+            <Link to={CREATE_MATCH}>
+              <img className="option-button__img" src={create} alt="crea partido" />
+              <Route exact path="/create-match" component={CreateMatch} />
+            </Link>
+          </button>
         </span>
         <span className="option">
           <span className="option__title">Mi Equipo</span>
-          <img className="option__img" src={team} alt="tu equipo" />
+          <button className="option-button" type="button" onClick={<link to="/create-match" />}>
+            <img className="option-button__img" src={team} alt="tu equipo" />
+          </button>
         </span>
         <span className="option">
           <span className="option__title">Buscar Partidos</span>
-          <img className="option__img" src={search} alt="busca partidos" />
+          <button className="option-button" type="button" onClick={<link to="/create-match" />}>
+            <img className="option-button__img" src={search} alt="busca partidos" />
+          </button>
         </span>
         <span className="option">
           <span className="option__title">Partidos Pasados</span>
-          <img className="option__img" src={games} alt="partidos pasados" />
+          <button className="option-button" type="button" onClick={<link to="/create-match" />}>
+            <img className="option-button__img" src={games} alt="partidos pasados" />
+          </button>
         </span>
         <span className="option">
           <span className="option__title">Invitaciones</span>
-          <img className="option__img" src={invitation} alt="partidos pasados" />
+          <button className="option-button" type="button" onClick={<link to="/create-match" />}>
+            <img className="option-button__img" src={invitation} alt="partidos pasados" />
+          </button>
         </span>
         <span className="option">
           <span className="option__title">Proximos Partidos</span>
-          <img className="option__img" src={next} alt="partidos pasados" />
+          <button className="option-button" type="button" onClick={<link to="/create-match" />}>
+            <img className="option-button__img" src={next} alt="partidos pasados" />
+          </button>
         </span>
       </section>
     </span>
