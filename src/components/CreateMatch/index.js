@@ -1,7 +1,12 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addTeam } from '../../modules/teams/actions';
-import { addPlayer, deletePlayer, updatePlayer } from '../../modules/players/actions';
+import {
+  addPlayer,
+  deletePlayer,
+  updatePlayer,
+  addBall
+} from '../../modules/players/actions';
 import CreateMatch from './CreateMatch';
 
 const mapStateToProps = ({ teams, players }) => ({
@@ -14,7 +19,8 @@ const mapDispatchToProps = dispatch => bindActionCreators(
     addTeam,
     addPlayer,
     deletePlayer,
-    updatePlayer
+    updatePlayer,
+    addBall
   },
   dispatch
 );

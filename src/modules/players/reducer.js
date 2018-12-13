@@ -1,4 +1,9 @@
-import { ADD_PLAYER, DELETE_PLAYER, UPDATE_PLAYER } from './actions';
+import {
+  ADD_PLAYER,
+  DELETE_PLAYER,
+  UPDATE_PLAYER,
+  ADD_BALL
+} from './actions';
 
 const InitialState = [];
 
@@ -26,6 +31,18 @@ export default (state = InitialState, action) => {
       };
 
       return state;
+    }
+
+    case ADD_BALL: {
+      state.forEach((each, index) => {
+        if (each.id === action.payload) {
+          state[index].ball = true;
+        } else {
+          state[index].ball = false;
+        }
+      });
+
+      return [...state];
     }
 
     default:

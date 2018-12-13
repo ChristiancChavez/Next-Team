@@ -58,21 +58,15 @@ class CreateMatch extends Component {
   }
 
   createPlayerItem = () => {
-    const { namePlayerInput, numberPlayerInput } = this.state;
+    const { namePlayerInput, numberPlayerInput, ball } = this.state;
     const { addPlayer } = this.props;
 
-    addPlayer({ name: namePlayerInput, number: numberPlayerInput });
+    addPlayer(namePlayerInput, numberPlayerInput, ball);
 
     this.setState({
       namePlayerInput: '',
       numberPlayerInput: '',
-    });
-  };
-
-  addingBall = () => {
-    const { ball } = this.state;
-    this.setState({
-      ball: !ball,
+      ball: false
     });
   };
 
@@ -266,12 +260,11 @@ class CreateMatch extends Component {
       showTeamList,
       namePlayerInput,
       numberPlayerInput,
-      ball,
       disabled,
       editId
     } = this.state;
 
-    const { players, deletePlayer } = this.props;
+    const { players, deletePlayer, addBall } = this.props;
 
     return (
       <div className="match">
@@ -310,8 +303,8 @@ class CreateMatch extends Component {
             namePlayerInput={namePlayerInput}
             numberPlayerInput={numberPlayerInput}
             playerList={players}
-            ball={ball}
             deletePlayer={deletePlayer}
+            addBall={addBall}
           />
           )}
         </section>
@@ -383,6 +376,7 @@ class CreateMatch extends Component {
 CreateMatch.propTypes = {
   addTeam: PropTypes.func,
   addPlayer: PropTypes.func,
+  addBall: PropTypes.func,
   players: PropTypes.shape([]),
   deletePlayer: PropTypes.func.isRequired,
   updatePlayer: PropTypes.func.isRequired

@@ -14,8 +14,8 @@ const CreateTeam = (props) => {
     editPlayer,
     handlershowPlayersField,
     playerList,
-    ball,
-    deletePlayer
+    deletePlayer,
+    addBall
   } = props;
 
   return (
@@ -24,16 +24,19 @@ const CreateTeam = (props) => {
         <img className="close__btn" src={close} alt="cerrar popup" />
       </button>
       <span className="list">
-        { playerList.length !== 0
+        {playerList.length !== 0
           ? playerList.map(singlePlayer => {
-            const { infoPlayer, id } = singlePlayer;
-            const { number, name } = infoPlayer;
-
+            const {
+              number,
+              name,
+              id,
+              ball
+            } = singlePlayer;
             return (
               <span className="list-player" key={id}>
                 <span className="options">
                   <img className="options__option" src={captain} alt="capitan" />
-                  {ball && <img className="options__option" src={ballPlay} alt="balón de fútbol" />}
+                  <img className={`options__option ${ball ? 'options__yes' : ''}`} onClick={() => addBall(id)} src={ballPlay} alt="balón de fútbol" role="presentation" />
                 </span>
                 <span className="list-player__name">{name}</span>
                 <span className="list-player__number">{number}</span>
@@ -76,7 +79,7 @@ CreateTeam.propTypes = {
   handlershowPlayersField: PropTypes.func.isRequired,
   showCreateTeam: PropTypes.func.isRequired,
   editPlayer: PropTypes.func.isRequired,
-  ball: PropTypes.bool.isRequired,
   playerList: PropTypes.arrayOf.isRequired,
-  deletePlayer: PropTypes.func.isRequired
+  deletePlayer: PropTypes.func.isRequired,
+  addBall: PropTypes.func.isRequired
 };

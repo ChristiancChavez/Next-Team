@@ -141,6 +141,9 @@
                     cursor: pointer;
                     margin-right: 6%;
                 }
+                &__yes {
+                    background: red;
+                }
             }
         }
     }
