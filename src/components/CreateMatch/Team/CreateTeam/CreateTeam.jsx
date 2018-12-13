@@ -14,7 +14,7 @@ const CreateTeam = (props) => {
     editPlayer,
     handlershowPlayersField,
     playerList,
-    ball
+    addingBall
   } = props;
   return (
     <div className="popup">
@@ -24,10 +24,10 @@ const CreateTeam = (props) => {
       <span className="list">
         { playerList.length !== 0
           ? playerList.map((singlePlayer) => (
-            <span className="list-player" key={singlePlayer.name}>
+            <span className="list-player" key={singlePlayer.id}>
               <span className="options">
                 <img className="options__option" src={captain} alt="capitan" />
-                {ball && <img className="options__option" src={ballPlay} alt="balón de fútbol" />}
+                <img className={`options__option ${singlePlayer.ball ? 'options__added-ball' : ''}`} role="presentation" onClick={() => addingBall(singlePlayer.id)} src={ballPlay} alt="balón de fútbol" />
               </span>
               <span className="list-player__name">{singlePlayer.namePlayerInput}</span>
               <span className="list-player__number">{singlePlayer.numberPlayerInput}</span>
@@ -69,6 +69,6 @@ CreateTeam.propTypes = {
   handlershowPlayersField: PropTypes.func.isRequired,
   showCreateTeam: PropTypes.func.isRequired,
   editPlayer: PropTypes.bool.isRequired,
-  ball: PropTypes.bool.isRequired,
+  addingBall: PropTypes.bool.isRequired,
   playerList: PropTypes.arrayOf.isRequired,
 };
