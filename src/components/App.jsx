@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import uuid from 'uuid/v4';
 import './App.scss';
 import { Route } from 'react-router-dom';
 import MainContent from './mainContent/MainContent';
@@ -15,6 +16,7 @@ import Navigation from './navigation/Navigation';
 import SessionUser from './SessionUser/SessionUser';
 import { firebase } from '../config/firebase';
 import soccerField from '../images/soccer-field.jpg';
+
 // import ballplay from '../images/arrow-right.png';
 
 class App extends Component {
@@ -33,7 +35,6 @@ class App extends Component {
       containerConfigureMatch: false,
       showPlayersField: false,
       showTeamList: false,
-      ball: false,
       authUser: null,
       name: '',
       nickname: '',
@@ -64,8 +65,13 @@ class App extends Component {
     });
   }
 
-  createPlayerItem = (player) => {
+  createPlayerItem = (infoPlayer) => {
     const { playerList } = this.state;
+
+    const ball = false;
+    const id = uuid();
+    const player = { ...infoPlayer, ball, id };
+
     this.setState({
       playerList: [...playerList, player],
       namePlayerInput: '',
@@ -73,10 +79,19 @@ class App extends Component {
     });
   };
 
-  addingBall = () => {
-    const { ball } = this.state;
+  addingBall = (id) => {
+    const { playerList } = this.state;
+
+    playerList.forEach((each, index) => {
+      if (each.id === id) {
+        playerList[index].ball = true;
+      } else {
+        playerList[index].ball = false;
+      }
+    });
+
     this.setState({
-      ball: !ball,
+      playerList
     });
   };
 
@@ -228,7 +243,6 @@ class App extends Component {
       namePlayerInput,
       numberPlayerInput,
       playerList,
-      ball,
     } = this.state;
 
     return (
@@ -271,7 +285,6 @@ class App extends Component {
             render={() => (
               <CreateMatch
                 playerList={playerList}
-                ball={ball}
                 addPlayer={addPlayer}
                 addShirt={addShirt}
                 addField={addField}

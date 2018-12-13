@@ -59,7 +59,6 @@ const CreateMatch = (props) => {
     numberPlayerInput,
     createPlayerItem,
     playerList,
-    ball,
     // showBall
   } = props;
 
@@ -125,7 +124,7 @@ const CreateMatch = (props) => {
           namePlayerInput={namePlayerInput}
           numberPlayerInput={numberPlayerInput}
           playerList={playerList}
-          ball={ball}
+          addingBall={addingBall}
         />
         )}
       </section>
@@ -220,7 +219,6 @@ CreateMatch.propTypes = {
   addConfiguration: PropTypes.bool.isRequired,
   numberPlayers: PropTypes.bool.isRequired,
   showTeamList: PropTypes.bool.isRequired,
-  ball: PropTypes.bool.isRequired,
   name: PropTypes.symbol.isRequired,
   playerList: PropTypes.arrayOf.isRequired,
   nickname: PropTypes.symbol.isRequired,

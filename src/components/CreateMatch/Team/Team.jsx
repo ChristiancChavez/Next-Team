@@ -4,8 +4,6 @@ import TeamsList from '../../teamsList/TeamList';
 import teams from '../../../Library/Teams';
 import addTeamList from '../../../images/create-team-list.png';
 import newPlayer from '../../../images/add-player.png';
-import ballPlay from '../../../images/ball-play.png';
-import captain from '../../../images/captain.png';
 import teamsListIcon from '../../../images/team-list.png';
 import './Team.scss';
 
@@ -22,7 +20,6 @@ const Team = (props) => {
     namePlayerInput,
     numberPlayerInput,
     createPlayerItem,
-    addingBall
   } = props;
   return (
     <div className="team">
@@ -52,12 +49,6 @@ const Team = (props) => {
             >
               <img className="add-button__icon" src={newPlayer} alt="adicionar jugador" />
             </button>
-            <button className="add-button" type="button">
-              <img className="add-button__icon" src={captain} alt="adicionar capitán" />
-            </button>
-            <button className="add-button" type="button" onClick={addingBall}>
-              <img className="add-button__icon" src={ballPlay} alt="adicionar balón" />
-            </button>
           </span>
         </span>
       )
@@ -83,7 +74,6 @@ const Team = (props) => {
 export default Team;
 
 Team.propTypes = {
-  addingBall: PropTypes.func.isRequired,
   createPlayerItem: PropTypes.func.isRequired,
   handleOnChange: PropTypes.func.isRequired,
   selectTeam: PropTypes.func.isRequired,
